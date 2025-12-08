@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* body{
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+.search{
+    margin-left: 440px;
+}
+ .top li a{
+    color: rgb(219, 102, 141);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+

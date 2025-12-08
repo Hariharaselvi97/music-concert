@@ -1,0 +1,28 @@
+
+
+/* .hero-image {
+  background-image: url("https://static.vecteezy.com/system/resources/previews/027/597/944/large_2x/live-drum-on-stage-with-spotlights-illuminating-smoke-music-and-concert-background-silhouette-concept-free-photo.jpg");
+  height: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+} */
+ .image{
+    background-image: url("https://i.pinimg.com/originals/3e/3d/b8/3e3db8caed636e0573fae54d352a78b0.png");
+    height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family:cursive;
+}
+
