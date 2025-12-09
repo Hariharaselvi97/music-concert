@@ -7,13 +7,20 @@
     background-size: cover;
     background-repeat: no-repeat;
 } */
+ body{
+    background: linear-gradient(to right, #FC466B, #3F5EFB);
+    
+ }
 .search{
     margin-left: 440px;
 }
  .top li a{
-    color: rgb(219, 102, 141);
+    color: white;
     font-size: 18px;
     font-weight: bold;
+}
+.top li a:hover{
+    color: white;
 }
 
 

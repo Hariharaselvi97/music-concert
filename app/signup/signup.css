@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: linear-gradient(to right, #FC466B, #3F5EFB);
+    height: 100vh;
+   
+}
+.outer{
+    border: 3px solid white;
+    width: 380px;
+    height: 480px;
+    margin-left: 480px;
+    margin-top: 120px;
+    border-radius: 20px;
+    background-color: transparent;
+    
+}
+.outer h1{
+    color: white;
+    margin-left: 140px;
+    font-size: 28px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+}
+.outer form{
+    margin-left: 50px;
+    margin-top: 50px;
+    color: white;
+    font-weight: 600;
+   
+}
+button{
+    border: 1px solid white;
+    margin-left: 70px;
+    padding: 12px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+button:hover{
+    background-color: green;
+}
+.outer input{
+    outline: none;
+    
+}
+.outer input{
+    border-bottom: 1px solid white;
+    width: 80%;
+    height: 30px;
+    color: white;
+    background-color: transparent;
+    
+}
+.outer ::placeholder{
+    font-family: cursive;
+}
+.eye p{
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+    margin-left: 130px;
+}
+.last1{
+    color:white;
+    margin-left: 25px;
+}
+
+
+
