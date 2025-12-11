@@ -86,7 +86,7 @@ export default function Signup(){
       setShowModal(true);
 
       setTimeout(() => {
-        localStorage.setItem("username", form.name);
+        // localStorage.setItem("username", form.name);
         router.replace("/"); // ✅ replace so login/signup removed from history
       }, 2000);
 

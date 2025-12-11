@@ -39,5 +39,12 @@ export async function signupAction(formData: FormData) {
     confirmpassword: hashedPass,
   });
 
-  return { success: true  };
+  // return { success: true  };
+   return {
+    success: true,
+    user: {
+      name,
+      email
+    }
+  };
 }

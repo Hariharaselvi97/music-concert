@@ -22,7 +22,16 @@ export async function loginAction(formData: FormData) {
     return { error: "Incorrect password" };
   }
 
-  return { success: true , username: user.name || "", email: user.email || ""  };
+  // return { success: true , username: user.name ||"" , email: user.email ||""  };
+
+  return {
+    success: true,
+    user: {
+      name: user.name,
+      email: user.email
+    }
+  };
+ 
 }
 
 

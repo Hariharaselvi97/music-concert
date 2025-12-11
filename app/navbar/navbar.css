@@ -11,8 +11,8 @@
     background: linear-gradient(to right, #FC466B, #3F5EFB);
     
  }
-.search{
-    margin-left: 440px;
+form.search{
+    margin-left: 400px;
 }
  .top li a{
     color: white;
@@ -22,5 +22,10 @@
 .top li a:hover{
     color: white;
 }
-
+ .search input{
+    width: 240px;
+}
+.but{
+    margin-left: 70px;
+}
 

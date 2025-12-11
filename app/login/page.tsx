@@ -78,11 +78,20 @@ export default function Login(){
       setShowModal(true);
       setMessage({ email: "", password: "" });
 
+      //  setTimeout(() => {
+      //  localStorage.setItem("username", res.username || ""); 
+      //   localStorage.setItem("email", res.email || "");
+      //   router.replace("/"); 
+      // }, 1500);
+
+      
        setTimeout(() => {
-       localStorage.setItem("username", res.username || ""); 
-        localStorage.setItem("email", res.email || "");
+       localStorage.setItem("username", res.user.name);
+       localStorage.setItem("email", res.user.email);
         router.replace("/"); 
       }, 1500);
+
+     
 
     }
   };
@@ -126,7 +135,10 @@ const closeModal=()=> setShowModal(false);
    
 <Link href="/signup" className="nav-link last">
   Not yet registered? Signup
-</Link>      
+</Link> 
+<Link href="/admin" className="nav-link last">
+  <p>For Adminlogin</p>
+</Link>     
 </form> 
     </div>
     
