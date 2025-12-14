@@ -41,12 +41,12 @@ export default function Admin(){
       const res = await adminAction(formData);
 
       
-     if (res.error) {
-      setModalType("error");
-      setModalMessage(res.error);
-      setShowModal(true);
-      return;
-    }
+    //  if (res.error) {
+    //   setModalType("error");
+    //   setModalMessage(res.error);
+    //   setShowModal(true);
+    //   return;
+    // }
 
      if (res.success) {
       setModalType("success");
@@ -54,8 +54,7 @@ export default function Admin(){
       setShowModal(true);
 
       setTimeout(() => {
-        // localStorage.setItem("username", form.name);
-        router.replace("/"); // ✅ replace so login/signup removed from history
+        router.push("/admindashboard");
       }, 2000);
 
       setForm({
@@ -63,9 +62,6 @@ export default function Admin(){
         password: "",
       
       });
-
-        
-
     }
   };
 
@@ -77,7 +73,7 @@ export default function Admin(){
     }
     return(
          <>
-            <div className="outer1">
+            <div className="out">
               <h1>Admin</h1>
               <form onSubmit={handleSubmit} >
               
@@ -93,7 +89,7 @@ export default function Admin(){
                 <label htmlFor="password"> Password</label>
                 </div>
         
-                <button className='butt'>Login</button><br></br><br></br>
+                <button className='butt1'>Login</button><br></br><br></br>
                  {/* <Nav.Link as={Link} href="/login" className="last1">Already have an account? Login</Nav.Link> */}
               </form>
              
