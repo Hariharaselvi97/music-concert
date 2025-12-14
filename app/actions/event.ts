@@ -21,10 +21,20 @@ export async function createEvent(formData: FormData) {
 
 export async function getEvents() {
   await Connectdb();
-  return await Event.find();
+
+  const events = await Event.find().lean(); // ✅ IMPORTANT
+
+  return events.map((e) => ({
+    ...e,
+    _id: e._id.toString(), // ✅ convert ObjectId
+  }));
 }
 
 export async function deleteEvent(id: string) {
   await Connectdb();
   await Event.findByIdAndDelete(id);
+}
+export async function updateEvent(id: string, data: any) {
+  await Connectdb();
+  await Event.findByIdAndUpdate(id, data);
 }

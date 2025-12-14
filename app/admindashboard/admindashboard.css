@@ -2,6 +2,61 @@
     margin: 0;
     padding: 0;
 }
-body{
-    background-color: white;
+.dashin input,textarea{
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 50px;
+    width: 70%;
+    height: 40px;
+    margin-top: 10px;
 }
+.dashin textarea{
+    height: 100px;
+}
+
+.ad{
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 380px;
+    height: 640px;
+    margin-left: 460px;
+    margin-top: 80px;
+}
+.ad h1{
+    color: white;
+    margin-left: 70px;
+    font-size: 28px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+}
+.addbut{
+    color: white;
+    background-color: green;
+    margin-left: 130px;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top:-60px
+}
+ table,tr,td,th{
+  border: 1px solid white;
+  border-collapse: collapse;
+  text-align: center;
+  
+}
+ table th{
+    color: white;
+    padding: 20px ;
+    border: 1px solid white;
+    text-align: center;
+   
+  }
+  table td{
+    color: white;
+    font-weight: bold;
+    border: 1px solid white;
+    padding: 18px ;
+  }
+    table{
+    margin-left: -200px;
+  }
