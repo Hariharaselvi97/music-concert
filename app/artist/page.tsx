@@ -13,19 +13,42 @@ export default async function Artist(){
 
 
     return(
-        <div id="artist">
-            <h2>Upcoming Concerts</h2>
-              {events.map((e: any) => (
-        <div key={e._id}>
-          {/* <img src={e.image} width={200} /> */}
-          <h3>{e.title}</h3>
-          <p>{e.location} | {e.date}</p>
-          <p>₹{e.ticketprice}</p>
-          {/* <p>
-            Available Seats: {e.totalSeats - e.soldSeats}
-          </p> */}
+      
+      <div className="container my-4" id="artist">
+  <h1 className="art"> Upcoming Concerts</h1><br></br><br></br>
+
+  <div className="row">
+    {events.map((e: any) => (
+      <div key={e._id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
+        <div className="card h-100 shadow-sm border-0 concert-card">
+
+          <img
+            src={e.image || "/concert-placeholder.jpg"}
+            className="card-img-top"
+            alt={e.title}
+            style={{ height: "220px", objectFit: "cover" }}/>
+
+          <div className="card-body d-flex flex-column">
+            <h5 className="card-title fw-bold color-white">{e.title}</h5>
+             <p className="card-text  mb-1 text-white" >📍 {e.location}</p>
+
+            <p className="card-text text-white mb-2">
+              📅 {new Date(e.date).toDateString()}
+            </p>
+
+            <p className="fw-bold text-white fs-5 mt-auto">
+              ₹{e.ticketprice}
+            </p>
+
+            <button className="btn mt-2 book">
+              Book Tickets
+            </button>
+          </div>
         </div>
-      ))}
-        </div>
+      </div>
+    ))}  
+
+  </div>
+</div>
     )
 }

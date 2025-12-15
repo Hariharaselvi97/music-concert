@@ -11,8 +11,8 @@ export async function createEvent(formData: FormData) {
     description: formData.get("description"),
     date: formData.get("date"),
     location: formData.get("location"),
-    ticketprice: Number(formData.get("price")),
-    totalseats: Number(formData.get("seats")),
+    ticketprice: Number(formData.get("ticketprice")),
+    totalseats: Number(formData.get("totalseats")),
     image: formData.get("image"),
   });
 

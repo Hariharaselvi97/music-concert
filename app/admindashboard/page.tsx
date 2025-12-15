@@ -11,6 +11,8 @@ import './admindashboard.css'
 export default function Admindashboard(){
     const [events, setEvents] = useState<any[]>([]);
     const [editEvent, setEditEvent] = useState<any>(null);
+//     const [title, setTitle] = useState("");      // string input
+// const [ticketprice, setTicketprice] = useState(0);
 
 
      const loadEvents = async () => {
@@ -39,12 +41,12 @@ export default function Admindashboard(){
        <div className="ad">
         <h1>Admin Dashboard</h1>
          <form action={handleCreate} className="dashin">
-        <input type="text"name="title" placeholder="Title" /><br></br><br></br>
+        <input type="text"name="title" placeholder="Title"  /><br></br><br></br>
         <input type="date"name="date" placeholder="Date" /><br></br><br></br>
         <input type="text"name="location" placeholder="Location" /><br></br><br></br>
-        <input type="number"name="ticketprice" placeholder="Price" /><br></br><br></br>
-        <input type="number"name="totalseats" placeholder="Seats" /><br></br><br></br>
-        <input name="image" placeholder="Image URL" /><br></br><br></br>
+        <input type="number"name="ticketprice" placeholder="Price"  /><br></br><br></br>
+        <input type="number"name="totalseats" placeholder="Seats"   /><br></br><br></br>
+        {/* <input name="image" placeholder="Image URL" /><br></br><br></br> */}
         <textarea name="description" placeholder="Description" /><br></br><br></br>
         <button type="submit" className="addbut">Add Event</button>
       </form><br></br>
@@ -57,7 +59,7 @@ export default function Admindashboard(){
                     <th style={{ whiteSpace: "nowrap" }}>Location</th>
                     <th style={{ whiteSpace: "nowrap" }}>TicketPrice</th>
                     <th style={{ whiteSpace: "nowrap" }}>TotalSeats</th>
-                    <th>Image</th>
+                    {/* <th>Image</th> */}
                     <th>Description</th>
                       <th>Actions</th>
                 </tr>
@@ -70,7 +72,7 @@ export default function Admindashboard(){
                           <td style={{ whiteSpace: "nowrap" }}>{e.location}</td>
                           <td style={{ whiteSpace: "nowrap" }}>{e.ticketprice}</td>
                           <td style={{ whiteSpace: "nowrap" }}>{e.totalseats}</td>
-                          <td>{e.image}</td>
+                          {/* <td>{e.image}</td> */}
                           <td>{e.description}</td>
                           <td>
                             <div  style={{ display: "flex", alignItems: "center",gap: "10px", whiteSpace: "nowrap",justifyContent: "center",
@@ -85,15 +87,15 @@ export default function Admindashboard(){
                 </tbody>
         </table>
          {editEvent && (
-        <form
+        <form className="ad1"
           onSubmit={async (e) => {
             e.preventDefault();
             await updateEvent(editEvent._id, {
               title: editEvent.title,
               date: editEvent.date,
               location: editEvent.location,
-              price: editEvent.price,
-              totalSeats: editEvent.totalSeats,
+              ticketprice: editEvent.ticketprice,
+              totalseats: editEvent.totalseats,
               description: editEvent.description,
             });
             setEditEvent(null);
@@ -101,56 +103,63 @@ export default function Admindashboard(){
           }}
           style={{ marginTop: "20px" }}
         >
-          <h3>Edit Event</h3>
+          <h3 style={{color:"white",textAlign:"center"}}>Edit Event</h3>
 
           <input
             value={editEvent.title}
+             placeholder="Title" 
             onChange={(e) =>
               setEditEvent({ ...editEvent, title: e.target.value })
             }
-          />
+          /><br></br><br></br>
 
           <input
             type="date"
+             placeholder="Date" 
             value={editEvent.date}
             onChange={(e) =>
               setEditEvent({ ...editEvent, date: e.target.value })
             }
-          />
+          /><br></br><br></br>
 
           <input
+          placeholder="Location"
             value={editEvent.location}
             onChange={(e) =>
               setEditEvent({ ...editEvent, location: e.target.value })
             }
-          />
+          /><br></br><br></br>
 
           <input
             type="number"
-            value={editEvent.price}
+            placeholder="Price"
+            value={editEvent.totalprice}
             onChange={(e) =>
-              setEditEvent({ ...editEvent, price: e.target.value })
+              setEditEvent({ ...editEvent, ticketprice: e.target.value })
             }
-          />
+          /><br></br><br></br>
 
           <input
             type="number"
-            value={editEvent.totalSeats}
+            placeholder="Seats"
+            value={editEvent.totalseats}
             onChange={(e) =>
-              setEditEvent({ ...editEvent, totalSeats: e.target.value })
+              setEditEvent({ ...editEvent, totalseats: e.target.value })
             }
-          />
+          /><br></br><br></br>
 
           <textarea
+          name="description"
+          placeholder="Description"
             value={editEvent.description}
             onChange={(e) =>
               setEditEvent({ ...editEvent, description: e.target.value })
             }
-          />
+          /><br></br><br></br>
 
           <br />
-          <button type="submit">Update</button>
-          <button type="button" onClick={() => setEditEvent(null)}>
+          <button type="submit" className="up">Update</button>
+          <button type="button" onClick={() => setEditEvent(null)} className="up1">
             Cancel
           </button>
         </form>
