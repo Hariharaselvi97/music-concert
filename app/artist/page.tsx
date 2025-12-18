@@ -1,8 +1,6 @@
-
 import { getEvents } from "../actions/event";
+import Link from "next/link";
 import './artist.css'
-
-
 
 
 
@@ -40,9 +38,9 @@ export default async function Artist(){
               ₹{e.ticketprice}
             </p>
 
-            <button className="btn mt-2 book">
-              Book Tickets
-            </button>
+          <Link href="/booking" className="nav-link book">
+          Book Now
+          </Link>
           </div>
         </div>
       </div>

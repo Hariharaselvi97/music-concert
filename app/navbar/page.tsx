@@ -10,11 +10,18 @@ import { useState,useEffect } from 'react';
 export default function Navbar(){
 
    const [loggedIn, setLoggedIn] = useState(false);
-
+   const [search, setSearch] = useState("");
+   const [events, setEvents] = useState([]);
   //   useEffect(() => {
   //   const user = localStorage.getItem("username");
   //   setLoggedIn(!!user);
   // }, []);
+
+
+  const filteredEvents = events.filter((event:any) =>
+    event.title.toLowerCase().includes(search.toLowerCase()) ||
+    event.location.toLowerCase().includes(search.toLowerCase())
+  );
 
    useEffect(() => {
     const checkUser = () => {
@@ -31,6 +38,7 @@ export default function Navbar(){
     localStorage.removeItem("username");
     setLoggedIn(false);
   };
+
     return(
 
 
@@ -42,10 +50,20 @@ export default function Navbar(){
       <h4 style={{marginLeft:"10px"}}>MusicBook</h4>
     </Link>
 
-    <form className="d-flex search  ">
-        <input className="form-control "style={{ marginRight: "-60px" }}  type="search" placeholder="Search" />
+    <form className="d-flex search ">
+        <input className="form-control "style={{ marginRight: "-60px" }}  type="text" placeholder="Search by title or location"   value={search}
+  onChange={(e) => setSearch(e.target.value)}/>
+      
+   {filteredEvents.map((event:any) => (
+        <div key={event._id}>
+          <h4>{event.title}</h4>
+          <p>{event.location}</p>
+        </div>
+      ))}
+  
         <button className="btn btn-outline-light but" type="submit"><FaSearch /></button>
       </form>
+     
 
     {/* Right: Links + Search */}
     <div className="d-flex ms-auto align-items-center" >

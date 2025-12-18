@@ -19,6 +19,10 @@
     background-color: yellow;
     width: 50%;
     margin-left: 80px;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
 }
 .book:hover{
     background-color: yellow;
