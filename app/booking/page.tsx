@@ -1,25 +1,30 @@
 'use client'
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { bookTickets, getBookedSeats } from "../actions/booking";
 import './booking.css'
 
 
 
 
 
-export default function booking(){
-type SelectedSeat = {
-  seat: string;
-  price: number;
-  type: "vip" | "gold" | "silver";
-};
+export default function Booking(){
+
+   type Seat={
+      seat:string,
+      price:number,
+      type: "vip" | "gold" | "silver"
+   }
+
    const seatData = {
   vip: {
     price: 3000,
-    seats: ["V1", "V2", "V3", "V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15","V16","V17","V18","V19","V20"],
+    seats: ["V1", "V2", "V3", "V4","V5","V6","V7","V8","V9","V10",
+      "V11","V12","V13","V14","V15","V16","V17","V18","V19","V20"],
   },
   gold: {
     price: 2000,
-    seats: ["G1", "G2", "G3", "G4", "G5", "G6","G7","G8","G9","G10","G11","G12","G13","G14","G15","G16","G17","G18","G19","G20",
+    seats: ["G1", "G2", "G3", "G4", "G5", "G6","G7","G8","G9","G10",
+      "G11","G12","G13","G14","G15","G16","G17","G18","G19","G20",
       "G21","G22","G23","G24","G25","G26","G27","G28","G29","G30"
     ],
   },
@@ -34,9 +39,18 @@ type SelectedSeat = {
   },
 };
 
-const [selectedSeats, setSelectedSeats] = useState<SelectedSeat[]>([]);
+const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
+  const [bookedSeats, setBookedSeats] = useState<string[]>([]);
 
-  const toggleSeat = (seat:string, price:number, type:"vip" | "gold" | "silver") => {
+    const [modalMessage, setModalMessage] = useState({ type: "", text: "" });
+    
+  const [showModal, setShowModal] = useState(false);
+
+   useEffect(() => {
+    getBookedSeats().then(setBookedSeats);
+  }, []);
+
+  const toggleSeat = (seat: string, price: number, type:"vip" | "gold" | "silver") => {
     const exists = selectedSeats.find((s) => s.seat === seat);
 
     if (exists) {
@@ -48,12 +62,31 @@ const [selectedSeats, setSelectedSeats] = useState<SelectedSeat[]>([]);
 
   const totalAmount = selectedSeats.reduce((sum, s) => sum + s.price, 0);
 
+  const handleBooking = async () => {
+    if (selectedSeats.length === 0) {
+      alert("Select seats first");
+      return;
+    }
+
+    await bookTickets(
+      selectedSeats.map((s) => s.seat),
+      totalAmount
+    );
+
+    setShowModal(true);
+    setBookedSeats((prev) => [
+      ...prev,
+      ...selectedSeats.map((s) => s.seat),
+    ]);
+    setSelectedSeats([]);
+  };
+
 
    return(
      <div className="container">
       <h2 className="text-center"> Select Your Seats</h2>
 
-      {Object.entries(seatData).map(([type, data]) => (
+     {Object.entries(seatData).map(([type, data]) => (
         <div key={type} className="section">
           <h4>
             {type.toUpperCase()} – ₹{data.price}
@@ -69,7 +102,8 @@ const [selectedSeats, setSelectedSeats] = useState<SelectedSeat[]>([]);
               >
                 {seat}
               </button>
-            ))}
+            ))} 
+         
           </div>
         </div>
       ))}
@@ -83,9 +117,26 @@ const [selectedSeats, setSelectedSeats] = useState<SelectedSeat[]>([]);
 
       <h4>Total: ₹{totalAmount}</h4>
 
-      <button className="btn btn-success">Book Tickets</button>
+      <button className="btn btn-success" onClick={handleBooking}>Book Tickets</button>
+      
+    {showModal && (
+        <div className="modal fade show d-block"style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%" }}>
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Booking Successful 🎉</h5>
+                <button
+                  className="btn-close"
+                  onClick={() => setShowModal(false)}
+                />
+              </div>
+              <div className="modal-body">
+                Seats booked successfully!
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-   )
-   
-    
+  );
 }
