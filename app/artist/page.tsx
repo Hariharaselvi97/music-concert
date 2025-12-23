@@ -38,9 +38,15 @@ export default async function Artist(){
               ₹{e.ticketprice}
             </p>
 
-          <Link href="/booking" className="nav-link book">
+          {/* <Link href="/booking" className="nav-link book">
           Book Now
-          </Link>
+          </Link> */}
+      <Link
+  href={`/booking?title=${e.title}&date=${e.date}`}
+  className="nav-link book"
+>
+  Book Now
+</Link>
           </div>
         </div>
       </div>

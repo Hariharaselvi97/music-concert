@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.pro{
+    color: white;
+    margin-left: 1200px;
+    font-size: 22px;
+    text-decoration: none;
+}
+.ticket {
+  width: 480px;
+  margin: 20px auto;
+  border: 4px dashed #ff4d4f;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: bisque;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-top: 100px;
+}
+
+.ticket-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.ticket-body {
+  margin-bottom: 15px;
+}
+
+.ticket-row {
+  display: flex;
+  padding: 5px 0;
+  font-size: 18px;
+}
+
+.label {
+ 
+  color: darkblue;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.value {
+  color:deeppink;
+}
+
+.ticket-footer {
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  border-top: 2px dashed #ff4d4f;
+  padding-top: 10px;
+}

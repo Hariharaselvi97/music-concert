@@ -43,7 +43,7 @@ export default function Navbar(){
 
 
 
-<nav className="navbar navbar-expand-lg navbar-dark ">
+<nav className="navbar navbar-expand-lg navbar-dark  ">
   <div className="container-fluid">
     <p style={{color:"white",fontSize:"30px",marginTop:"10px"}}><FaMusic /></p>
     <Link href="/" className="navbar-brand">
