@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const BookingSchema = new mongoose.Schema({
   seats: [String],
   totalAmount: Number,
+    eventId: String,
 });
 
 export const Booking = 

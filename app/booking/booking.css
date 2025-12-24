@@ -50,3 +50,24 @@
     font-size: 22px;
     text-decoration: none;
 }
+.seat {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.seat.booked {
+  background: rgb(245, 62, 62);
+  color: white;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background: rgb(61, 61, 247);
+  color: white;}
+
+  .seat:not(.booked):not(.selected) {
+  background: rgb(32, 128, 32);
+  color: white;
+}

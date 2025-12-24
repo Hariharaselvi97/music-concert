@@ -5,14 +5,15 @@ import './booking.css'
 import { v4 as uuidv4 } from 'uuid';
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 
-
-export default function Booking(){
-
+export default function Booking({ eventId }: { eventId: string }){
+ const router = useRouter(); 
  const searchParams = useSearchParams();
 const eventTitle = searchParams.get("title");
 const eventDate = searchParams.get("date");
+
    type Seat={
       seat:string,
       price:number,
@@ -40,20 +41,33 @@ const eventDate = searchParams.get("date");
       "S31","S32","S33","S34","S35","S36","S37","S38","S39","S40",
       "S41","S42","S43","S44","S45","S46","S47","S48","S49","S50"
     ],
+
+
   },
 };
 
 const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
   const [bookedSeats, setBookedSeats] = useState<string[]>([]);
-   const [modalMessage, setModalMessage] = useState({ type: "", text: "" });
-    const [email, setEmail] = useState("");
- 
+  const [modalMessage, setModalMessage] = useState({ type: "", text: "" });
+  const [email, setEmail] = useState("");
 
-   useEffect(() => {
-    getBookedSeats().then(setBookedSeats);
-  }, []);
+
+
+  useEffect(() => {
+    async function loadSeats() {
+      const booked = await getBookedSeats(eventId);
+      setBookedSeats(booked);
+    }
+    loadSeats();
+  }, [eventId]);
+ 
+  //  useEffect(() => { 
+  //   getBookedSeats().then(setBookedSeats);
+  // }, []);
+  
 
   const toggleSeat = (seat: string, price: number, type:"vip" | "gold" | "silver") => {
+      if (bookedSeats.includes(seat)) return;
     const exists = selectedSeats.find((s) => s.seat === seat);
 
     if (exists) {
@@ -65,8 +79,19 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
 
   const totalAmount = selectedSeats.reduce((sum, s) => sum + s.price, 0);
  const bookingId = uuidv4();
+
+
  const handleBooking = async () => {
-   
+    const user = localStorage.getItem("user");
+
+    if (!user) {
+    alert("Login required!");
+    router.push("/login");
+    return;
+   }
+
+  await bookTickets(selectedSeats, totalAmount);
+  
     if (selectedSeats.length === 0) {
       alert("Select seats first!");
       return;
@@ -125,7 +150,8 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
             {type.toUpperCase()} – ₹{data.price}
            </h5>
           <div className="seats">
-            {data.seats.map((seat) => (
+           {/* {data.seats.map((seat) => (
+              
               <button
                 key={seat}
                 className={`seat ${
@@ -135,8 +161,26 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
               >
                 {seat}
               </button>
-            ))} 
-         
+            ))}  */}
+
+           {data.seats.map((seat) => {
+  const isBooked = bookedSeats.includes(seat);
+  const isSelected = selectedSeats.some((s) => s.seat === seat);
+
+  return (
+    <button
+      key={seat}
+      disabled={isBooked}
+      onClick={() => toggleSeat(seat, data.price, type)}
+      className={`seat 
+        ${isBooked ? "booked" : ""} 
+        ${isSelected ? "selected" : ""}`}
+    >
+      {seat}
+    </button>
+  );
+})}
+        
           </div>
         </div>
       ))}

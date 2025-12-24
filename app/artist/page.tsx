@@ -34,9 +34,9 @@ export default async function Artist(){
               📅 {new Date(e.date).toDateString()}
             </p>
 
-            <p className="fw-bold text-white fs-5 mt-auto">
+            {/* <p className="fw-bold text-white fs-5 mt-auto">
               ₹{e.ticketprice}
-            </p>
+            </p> */}
 
           {/* <Link href="/booking" className="nav-link book">
           Book Now

@@ -19,7 +19,7 @@
     border: 1px solid white;
     border-radius: 10px;
     width: 380px;
-    height: 580px;
+    height: 528px;
     margin-left: 460px;
     margin-top: 80px;
 }
@@ -59,7 +59,7 @@
     padding: 18px ;
   }
     table{
-    margin-left: -200px;
+    margin-left: -250px;
   }
 .ad1{
     border: 1px solid white;
@@ -73,6 +73,7 @@
   border: 1px solid white;
   margin-left: 50px;
   border-radius: 5px;
+  color:darkblue;
   
 }
 .up{
@@ -89,4 +90,11 @@
 }
 .ad1 textarea{
   height: 60px;
+  color:darkblue;
+}
+.pro{
+    color: white;
+    margin-left: 1200px;
+    font-size: 22px;
+    text-decoration: none;
 }

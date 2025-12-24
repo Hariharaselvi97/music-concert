@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import './admindashboard.css'
-
+import Link from "next/link";
 
 
 
@@ -38,13 +38,16 @@ export default function Admindashboard(){
 };
 
     return(
+      <>
+              <div className='back'> <Link href="/" className='pro'>Back to home</Link></div>
+
        <div className="ad">
         <h1>Admin Dashboard</h1>
          <form action={handleCreate} className="dashin">
         <input type="text"name="title" placeholder="Title"  /><br></br><br></br>
         <input type="date"name="date" placeholder="Date" /><br></br><br></br>
         <input type="text"name="location" placeholder="Location" /><br></br><br></br>
-        <input type="number"name="ticketprice" placeholder="Price"  /><br></br><br></br>
+        {/* <input type="number"name="ticketprice" placeholder="Price"  /><br></br><br></br> */}
         <input type="number"name="totalseats" placeholder="Seats"   /><br></br><br></br>
         {/* <input name="image" placeholder="Image URL" /><br></br><br></br> */}
         <textarea name="description" placeholder="Description" /><br></br><br></br>
@@ -57,7 +60,7 @@ export default function Admindashboard(){
                     <th style={{ whiteSpace: "nowrap" }}>Title</th>
                     <th style={{ whiteSpace: "nowrap" }}>Date</th>
                     <th style={{ whiteSpace: "nowrap" }}>Location</th>
-                    <th style={{ whiteSpace: "nowrap" }}>TicketPrice</th>
+                    {/* <th style={{ whiteSpace: "nowrap" }}>TicketPrice</th> */}
                     <th style={{ whiteSpace: "nowrap" }}>TotalSeats</th>
                     {/* <th>Image</th> */}
                     <th>Description</th>
@@ -70,7 +73,7 @@ export default function Admindashboard(){
                           <td style={{ whiteSpace: "nowrap" }}>{e.title}</td>
                           <td style={{ whiteSpace: "nowrap" }}>{e.date}</td>
                           <td style={{ whiteSpace: "nowrap" }}>{e.location}</td>
-                          <td style={{ whiteSpace: "nowrap" }}>{e.ticketprice}</td>
+                          {/* <td style={{ whiteSpace: "nowrap" }}>{e.ticketprice}</td> */}
                           <td style={{ whiteSpace: "nowrap" }}>{e.totalseats}</td>
                           {/* <td>{e.image}</td> */}
                           <td>{e.description}</td>
@@ -94,7 +97,7 @@ export default function Admindashboard(){
               title: editEvent.title,
               date: editEvent.date,
               location: editEvent.location,
-              ticketprice: editEvent.ticketprice,
+              // ticketprice: editEvent.ticketprice,
               totalseats: editEvent.totalseats,
               description: editEvent.description,
             });
@@ -130,14 +133,14 @@ export default function Admindashboard(){
             }
           /><br></br><br></br>
 
-          <input
+          {/* <input
             type="number"
             placeholder="Price"
             value={editEvent.totalprice}
             onChange={(e) =>
               setEditEvent({ ...editEvent, ticketprice: e.target.value })
             }
-          /><br></br><br></br>
+          /><br></br><br></br> */}
 
           <input
             type="number"
@@ -165,5 +168,6 @@ export default function Admindashboard(){
         </form>
       )}
        </div>
+       </>
     )
 }

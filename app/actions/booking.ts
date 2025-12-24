@@ -6,10 +6,12 @@ import {Connectdb} from "@/lib/mongodb";
 import { v4 as uuidv4 } from "uuid";
 
 
-export async function getBookedSeats() {
+export async function getBookedSeats(eventId:string) {
   await Connectdb();
-  const bookings = await Booking.find({});
+  
+  const bookings = await Booking.find({eventId});
   return bookings.flatMap((b) => b.seats);
+ 
 }
 
 export async function bookTickets(
