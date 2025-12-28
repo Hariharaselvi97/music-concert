@@ -8,12 +8,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 
+
+
 export default function Booking({ eventId }: { eventId: string }){
  const router = useRouter(); 
  const searchParams = useSearchParams();
 const eventTitle = searchParams.get("title");
 const eventDate = searchParams.get("date");
-
    type Seat={
       seat:string,
       price:number,
@@ -46,11 +47,12 @@ const eventDate = searchParams.get("date");
   },
 };
 
-const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
+  const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
   const [bookedSeats, setBookedSeats] = useState<string[]>([]);
   const [modalMessage, setModalMessage] = useState({ type: "", text: "" });
   const [email, setEmail] = useState("");
 
+ 
 
 
   useEffect(() => {
@@ -60,6 +62,8 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
     }
     loadSeats();
   }, [eventId]);
+
+
  
   //  useEffect(() => { 
   //   getBookedSeats().then(setBookedSeats);
@@ -82,15 +86,15 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
 
 
  const handleBooking = async () => {
-    const user = localStorage.getItem("user");
+  //   const user = localStorage.getItem("user");
 
-    if (!user) {
-    alert("Login required!");
-    router.push("/login");
-    return;
-   }
+  //   if (!user) {
+  //   alert("Login required!");
+  //   router.push("/login");
+  //   return;
+  //  }
 
-  await bookTickets(selectedSeats, totalAmount);
+  await bookTickets( selectedSeats.map(s => s.seat), totalAmount,email);
   
     if (selectedSeats.length === 0) {
       alert("Select seats first!");
@@ -136,12 +140,13 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
    
 
    return(
-     <>
-       {/* <h2>{eventTitle}</h2>
-      <p>{new Date(eventDate!).toDateString()}</p> */}
+     < div key={eventId}>
+      
         <div className='back'> <Link href="/" className='pro'>Back to home</Link></div>
 
      <div className="container">
+       <h4 style={{color:"darkblue"}}>{eventTitle}</h4>
+      <p  style={{color:"darkblue"}}>{new Date(eventDate!).toDateString()}</p>
       <h2 style={{textAlign:"center",fontFamily:"cursive",color:"green"}}> Select Your Seats</h2>
   
      {Object.entries(seatData).map(([type, data]) => (
@@ -150,25 +155,15 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
             {type.toUpperCase()} – ₹{data.price}
            </h5>
           <div className="seats">
-           {/* {data.seats.map((seat) => (
-              
-              <button
-                key={seat}
-                className={`seat ${
-                  selectedSeats.some((s) => s.seat === seat) ? "selected" : ""
-                }`}
-                onClick={() => toggleSeat(seat, data.price, type)}
-              >
-                {seat}
-              </button>
-            ))}  */}
 
            {data.seats.map((seat) => {
-  const isBooked = bookedSeats.includes(seat);
-  const isSelected = selectedSeats.some((s) => s.seat === seat);
+           
+          const isBooked = bookedSeats.includes(seat);
+          const isSelected = selectedSeats.some((s) => s.seat === seat);
 
   return (
     <button
+    
       key={seat}
       disabled={isBooked}
       onClick={() => toggleSeat(seat, data.price, type)}
@@ -193,24 +188,7 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
 
       <button className="btn btn-success bookbut" onClick={handleBooking} >Book Tickets</button>
       
-    {/* {showModal && (
-        <div className="modal fade show d-block"style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%" }}>
-          <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Booking Successful 🎉</h5>
-                <button
-                  className="btn-close"
-                  onClick={() => setShowModal(false)}
-                />
-              </div>
-              <div className="modal-body">
-                Seats booked successfully!
-              </div>
-            </div>
-          </div>
-        </div>
-      )} */}
+    
        {showModal && (
         <div className="modal show d-block" style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%" }}>
           <div className="modal-dialog modal-dialog-centered">
@@ -226,6 +204,6 @@ const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
         </div>
     )}
     </div>
-    </>
+    </div>
   );
 }
