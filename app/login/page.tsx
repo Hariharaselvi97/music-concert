@@ -78,13 +78,12 @@ export default function Login(){
       setShowModal(true);
       setMessage({ email: "", password: "" });
 
-      //  setTimeout(() => {
-      //  localStorage.setItem("username", res.username || ""); 
-      //   localStorage.setItem("email", res.email || "");
-      //   router.replace("/"); 
-      // }, 1500);
+       localStorage.removeItem("bookingId");
+       localStorage.removeItem("selectedSeats");
+       localStorage.removeItem("totalAmount");
+       localStorage.removeItem("eventTitle");
+       localStorage.removeItem("eventDate");
 
-      
        setTimeout(() => {
        localStorage.setItem("username", res.user.name);
        localStorage.setItem("email", res.user.email);

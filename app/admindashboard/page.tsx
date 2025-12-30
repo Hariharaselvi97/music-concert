@@ -98,6 +98,7 @@ export default function Admindashboard(){
               date: editEvent.date,
               location: editEvent.location,
               // ticketprice: editEvent.ticketprice,
+              // image:editEvent.image,
               totalseats: editEvent.totalseats,
               description: editEvent.description,
             });
@@ -150,6 +151,15 @@ export default function Admindashboard(){
               setEditEvent({ ...editEvent, totalseats: e.target.value })
             }
           /><br></br><br></br>
+
+          {/* <input
+            type="file"
+            placeholder="Image "
+            value={editEvent.image}
+            onChange={(e) =>
+              setEditEvent({ ...editEvent, image: e.target.value })
+            }
+          /><br></br><br></br> */}
 
           <textarea
           name="description"

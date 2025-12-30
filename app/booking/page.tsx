@@ -15,6 +15,7 @@ export default function Booking({ eventId }: { eventId: string }){
  const searchParams = useSearchParams();
 const eventTitle = searchParams.get("title");
 const eventDate = searchParams.get("date");
+
    type Seat={
       seat:string,
       price:number,
@@ -53,9 +54,10 @@ const eventDate = searchParams.get("date");
   const [email, setEmail] = useState("");
 
  
-
+  
 
   useEffect(() => {
+  
     async function loadSeats() {
       const booked = await getBookedSeats(eventId);
       setBookedSeats(booked);
@@ -71,7 +73,7 @@ const eventDate = searchParams.get("date");
   
 
   const toggleSeat = (seat: string, price: number, type:"vip" | "gold" | "silver") => {
-      if (bookedSeats.includes(seat)) return;
+     
     const exists = selectedSeats.find((s) => s.seat === seat);
 
     if (exists) {
@@ -82,7 +84,7 @@ const eventDate = searchParams.get("date");
   };
 
   const totalAmount = selectedSeats.reduce((sum, s) => sum + s.price, 0);
- const bookingId = uuidv4();
+   const bookingId = uuidv4();
 
 
  const handleBooking = async () => {
@@ -93,23 +95,18 @@ const eventDate = searchParams.get("date");
   //   router.push("/login");
   //   return;
   //  }
+    
+    await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
 
-  await bookTickets( selectedSeats.map(s => s.seat), totalAmount,email);
-  
+   
     if (selectedSeats.length === 0) {
       alert("Select seats first!");
       return;
     }
 
     try {
+    
 
-      //   await bookTickets(
-      //   selectedSeats.map((s) => s.seat),
-      //   totalAmount,
-      //   email,
-       
-      // );
-     
        localStorage.setItem("eventTitle", eventTitle || "");
        localStorage.setItem("eventDate", eventDate || "");
      
