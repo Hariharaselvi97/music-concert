@@ -156,7 +156,7 @@ export default function Navbar(){
                 <div className="spinner-border text-primary mb-3" role="status">
                   <span className="visually-hidden">Loading...</span>
                 </div>
-                <p>Logging out...</p>
+                <p style={{fontSize:"25px"}}>Logging out...</p>
               </div>
             </div>
           </div>

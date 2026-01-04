@@ -2,10 +2,6 @@
   background: linear-gradient(to right, #1132db);
   overflow: hidden;
 }
-
-
-
-/* Footer links */
 .footer-link {
   color: #ccc;
   text-decoration: none;
@@ -15,8 +11,6 @@
   color: #ffc107;
   padding-left: 5px;
 }
-
-/* Social icons animation */
 .social-icons a {
   color: white;
   font-size: 1.4rem;
@@ -28,11 +22,9 @@
   transform: translateY(-5px) scale(1.1);
   color: crimson;
 }
-
-/* Footer copyright */
 .music-footer span {
   color: yellow;
 }
 .foot{
-    margin-left: 450px;
+    margin-left: 570px;
 }

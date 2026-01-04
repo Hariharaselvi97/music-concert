@@ -1,36 +1,36 @@
-*{
-    margin: 0;
-    padding:0
-}
+
 .art{
     color: white;
-    text-align: center;
-    font-weight: bold;
-    font-family: "Amarna", sans-serif;
-}
-.art{
-    margin-top: 130px;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Amarna", sans-serif;
+  margin-top: 100px;
 }
 .card:hover {
   transform: translateY(-5px);
   transition: 0.3s ease;
 }
 .book{
-    background-color: yellow;
-    width: 50%;
-    margin-left: 80px;
-    color: black;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
+  display: block;
+  width: 50%;
+  margin: 20px auto 0 auto; /* center button */
+  background-color: yellow;
+  color: black;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
 }
 .book:hover{
     background-color: yellow;
     color: black;
 }
 .concert-card {
-background: linear-gradient(135deg, #1d60db, #1d2229);
+  background: linear-gradient(135deg, #1d60db, #1d2229);
   color: white;
   border-radius: 16px;
+  transition: transform 0.3s ease;
 }
-
+.concert-card:hover {
+  transform: translateY(-5px);
+}

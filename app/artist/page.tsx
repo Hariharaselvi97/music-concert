@@ -24,7 +24,7 @@ export default async function Artist(){
             src={e.image || "/concert-placeholder.jpg"}
             className="card-img-top"
             alt={e.title}
-            style={{ height: "220px", objectFit: "cover" }}/>
+            style={{width: "100%",  height: "220px", objectFit: "cover" }}/>
 
           <div className="card-body d-flex flex-column">
             <h5 className="card-title fw-bold color-white">{e.title}</h5>
@@ -42,7 +42,7 @@ export default async function Artist(){
           Book Now
           </Link> */}
       <Link
-  href={`/booking?title=${e.title}&date=${e.date}`}
+  href={`/booking?eventId=${e._id}&title=${e.title}&date=${e.date}`}
   className="nav-link book"
 >
   Book Now

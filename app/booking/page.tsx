@@ -1,6 +1,8 @@
 'use client'
 import { useState,useEffect } from "react";
-import { bookTickets, getBookedSeats } from "../actions/booking";
+// import { bookTickets, getBookedSeats } from "../actions/booking";
+import { bookTickets ,getBookedSeats} from "../actions/booking";
+
 import './booking.css'
 import { v4 as uuidv4 } from 'uuid';
 import { useSearchParams } from "next/navigation";
@@ -10,9 +12,11 @@ import { useRouter } from "next/navigation";
 
 
 
-export default function Booking({ eventId }: { eventId: string }){
+// export default function Booking({ eventId }: { eventId: string }){
+  export default function Booking(){
  const router = useRouter(); 
  const searchParams = useSearchParams();
+const eventId = searchParams.get("eventId")!;
 const eventTitle = searchParams.get("title");
 const eventDate = searchParams.get("date");
 
@@ -50,14 +54,12 @@ const eventDate = searchParams.get("date");
 
   const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
   const [bookedSeats, setBookedSeats] = useState<string[]>([]);
-  const [modalMessage, setModalMessage] = useState({ type: "", text: "" });
+  // const [modalMessage, setModalMessage] = useState({ type: "", text: "" });
   const [email, setEmail] = useState("");
 
- 
   
 
   useEffect(() => {
-  
     async function loadSeats() {
       const booked = await getBookedSeats(eventId);
       setBookedSeats(booked);
@@ -66,10 +68,26 @@ const eventDate = searchParams.get("date");
   }, [eventId]);
 
 
+
+// const fetchBookedSeats = async () => {
+//   if (!eventId) return;
+//   try {
+//     const res = await fetch(`/api/booked-seats?eventId=${eventId}`);
+//     const data: string[] = await res.json();
+//     setBookedSeats(data);
+//   } catch (err) {
+//     console.error("Failed to load booked seats", err);
+//   }
+// };
+
+// // Now it’s safe to use
+// useEffect(() => {
+//   fetchBookedSeats();
+// }, [eventId]);
+
+
  
-  //  useEffect(() => { 
-  //   getBookedSeats().then(setBookedSeats);
-  // }, []);
+ 
   
 
   const toggleSeat = (seat: string, price: number, type:"vip" | "gold" | "silver") => {
@@ -96,16 +114,24 @@ const eventDate = searchParams.get("date");
   //   return;
   //  }
     
-    await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
 
    
     if (selectedSeats.length === 0) {
       alert("Select seats first!");
       return;
     }
-
+    await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
     try {
-    
+        //  const bookingId = uuidv4();
+
+        // await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
+
+         
+      
+      // await fetchBookedSeats();
+      // setSelectedSeats([]);
+      //  setShowModal(true);
+
 
        localStorage.setItem("eventTitle", eventTitle || "");
        localStorage.setItem("eventDate", eventDate || "");
@@ -115,18 +141,21 @@ const eventDate = searchParams.get("date");
        localStorage.setItem("selectedSeats",JSON.stringify(selectedSeats.map((s) => s.seat)) );
        localStorage.setItem( "totalAmount", totalAmount.toString() );
 
-   
+     
     
 
       setShowModal(true);
       setBookedSeats(prev => [...prev, ...selectedSeats.map(s => s.seat)]);
       setSelectedSeats([]);
-    } catch (error) {
-      console.error(error);
+
+      setTimeout(() => {
+      router.push("/profile");
+    }, 2000); // 2000ms = 2 seconds
+
+   } catch (err) {
+      console.error(err);
       alert("Booking failed. Try again.");
     }
-
-
   };
 
 
@@ -139,11 +168,11 @@ const eventDate = searchParams.get("date");
    return(
      < div key={eventId}>
       
-        <div className='back'> <Link href="/" className='pro'>Back to home</Link></div>
+        {/* <div className='back'> <Link href="/" className='pro'>Back to home</Link></div> */}
 
-     <div className="container">
-       <h4 style={{color:"darkblue"}}>{eventTitle}</h4>
-      <p  style={{color:"darkblue"}}>{new Date(eventDate!).toDateString()}</p>
+     <div className="con">
+       <h4 style={{color:"darkblue",textAlign:"center"}}>{eventTitle}</h4>
+      <p  style={{color:"darkblue",textAlign:"center"}}>{new Date(eventDate!).toDateString()}</p>
       <h2 style={{textAlign:"center",fontFamily:"cursive",color:"green"}}> Select Your Seats</h2>
   
      {Object.entries(seatData).map(([type, data]) => (
@@ -163,7 +192,7 @@ const eventDate = searchParams.get("date");
     
       key={seat}
       disabled={isBooked}
-      onClick={() => toggleSeat(seat, data.price, type)}
+      onClick={() => toggleSeat(seat, data.price, type as any)}
       className={`seat 
         ${isBooked ? "booked" : ""} 
         ${isSelected ? "selected" : ""}`}

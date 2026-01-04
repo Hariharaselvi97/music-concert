@@ -8,16 +8,16 @@ import Link from "next/link";
 export default function Footer(){
     return(
        <footer className="music-footer text-light pt-5 pb-4 mt-5">
-      <div className="container">
+      <div >
         <div className="row footer-content">
 
           {/* Brand */}
           <div className="col-md-4 mb-4 fade-up">
-          <p style={{color:"yellow",fontSize:"25px",marginTop:"10px"}}><FaMusic /></p>
+          <p style={{color:"yellow",fontSize:"25px",marginTop:"10px",marginLeft:"15px"}}><FaMusic /></p>
               <Link href="/" className="navbar-brand">
-                <p style={{marginLeft:"28px",marginTop:"-38px",color:"yellow",fontWeight:"bold"}}>MusicBook</p>
+                <p style={{marginLeft:"45px",marginTop:"-38px",color:"yellow",fontWeight:"bold"}}>MusicBook</p>
               </Link>
-            <p>
+            <p style={{marginLeft:"15px",fontSize:"18px"}}>
               Experience live concerts with premium seating and seamless booking.
             </p>
           </div>
@@ -35,10 +35,10 @@ export default function Footer(){
 
           {/* Social */}
           <div className="col-md-3 mb-4 foot">
-            <h6 className="fw-bold" style={{color:"yellow"}}>Contact Us</h6>
+            <h6 className="fw-bold" style={{color:"yellow",marginTop:"15px"}}>Contact Us</h6>
           <p style={{color:"white",fontSize:"20px",marginTop:"10px"}}><CgMail /></p>
               <Link href="/" className="navbar-brand">
-                <p style={{marginLeft:"28px",marginTop:"-38px"}}>musicbookinfo@gmail.com</p>
+                <p style={{marginLeft:"28px",marginTop:"-38px",fontSize:"18px"}}>musicbookinfo@gmail.com</p>
               </Link>
           </div>
 

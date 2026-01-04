@@ -49,7 +49,7 @@ export default function Admindashboard(){
         <input type="text"name="location" placeholder="Location" /><br></br><br></br>
         {/* <input type="number"name="ticketprice" placeholder="Price"  /><br></br><br></br> */}
         <input type="number"name="totalseats" placeholder="Seats"   /><br></br><br></br>
-        {/* <input name="image" placeholder="Image URL" /><br></br><br></br> */}
+       <input type="file" name="image" />
         <textarea name="description" placeholder="Description" /><br></br><br></br>
         <button type="submit" className="addbut">Add Event</button>
       </form><br></br>
@@ -75,7 +75,9 @@ export default function Admindashboard(){
                           <td style={{ whiteSpace: "nowrap" }}>{e.location}</td>
                           {/* <td style={{ whiteSpace: "nowrap" }}>{e.ticketprice}</td> */}
                           <td style={{ whiteSpace: "nowrap" }}>{e.totalseats}</td>
-                          {/* <td>{e.image}</td> */}
+                        {/* <td>
+  {e.image && <img src={e.image} width="80" />}
+</td> */}
                           <td>{e.description}</td>
                           <td>
                             <div  style={{ display: "flex", alignItems: "center",gap: "10px", whiteSpace: "nowrap",justifyContent: "center",
@@ -153,13 +155,15 @@ export default function Admindashboard(){
           /><br></br><br></br>
 
           {/* <input
-            type="file"
-            placeholder="Image "
-            value={editEvent.image}
-            onChange={(e) =>
-              setEditEvent({ ...editEvent, image: e.target.value })
-            }
-          /><br></br><br></br> */}
+  type="file"
+  accept="image/*"
+  onChange={(e) =>
+    setEditEvent({
+      ...editEvent,
+      image: e.target.files?.[0] || null,
+    })
+  }
+/><br></br><br></br> */}
 
           <textarea
           name="description"

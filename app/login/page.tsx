@@ -136,7 +136,7 @@ const closeModal=()=> setShowModal(false);
   Not yet registered? Signup
 </Link> 
 <Link href="/admin" className="nav-link last">
-  <p>For Adminlogin</p>
+  <p style={{marginLeft:"50px",marginTop:"10px"}}>For Adminlogin</p>
 </Link>     
 </form> 
     </div>

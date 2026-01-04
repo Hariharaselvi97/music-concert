@@ -1,4 +1,4 @@
-.container {
+.con {
   max-width: 700px;
   margin: auto;
   background-color:rgb(238, 205, 165);
@@ -8,11 +8,11 @@
 
 .section {
   margin-top: 40px;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 .section h5{
-      text-align: center;
-      color: brown;
+    text-align: center;
+    color: brown;
 
 }
 .seats {
@@ -41,8 +41,8 @@
   
 }
 .bookbut{
-  margin-left: 280px;
-  margin-top: 20px;
+  display: block;
+  margin: 20px auto 0 auto;
 }
 .pro{
     color: white;
@@ -50,12 +50,12 @@
     font-size: 22px;
     text-decoration: none;
 }
-.seat {
+/* .seat {
   padding: 10px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
-}
+} */
 
 .seat.booked {
   background: rgb(245, 62, 62);
@@ -67,7 +67,29 @@
   background: rgb(61, 61, 247);
   color: white;}
 
-  .seat:not(.booked):not(.selected) {
+.seat:not(.booked):not(.selected) {
   background: rgb(32, 128, 32);
   color: white;
+}
+
+.modal.show {
+  position: fixed;          /* stays above all content */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;            /* center modal content */
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);  /* dark overlay */
+  z-index: 9999;            /* above all sections */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: center;
 }

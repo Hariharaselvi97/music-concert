@@ -1,16 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 .abo{
     color: white;
+    text-align: center; 
+    margin-left: 240px;
     text-align: center;
-    font-size: 24px;
-    margin-left: 160px;
 }
-/* html {
-  scroll-behavior: smooth;
-} */
 .abo p{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 28px;
 }

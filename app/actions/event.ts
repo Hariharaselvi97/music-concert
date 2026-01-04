@@ -1,5 +1,4 @@
 "use server";
-
 import { Connectdb } from "@/lib/mongodb";
 import { Event } from "@/modals/Event";
 

@@ -6,7 +6,7 @@ import './about.css'
 export default function About(){
     return(
         <section id="about" className="about py-5 text-center">
-  <div className="container">
+ 
     <div className="row justify-content-center"></div>
         <div className='col-md-8 abo'>
             <h1 className='fw-bold mb-3'>About</h1>
@@ -19,7 +19,7 @@ We connect fans with electrifying live concerts, iconic performances, and rising
 </p> */}
          
         </div>
-        </div>
+     
         </section>
     )
 }
