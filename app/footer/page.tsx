@@ -7,17 +7,17 @@ import Link from "next/link";
 
 export default function Footer(){
     return(
-       <footer className="music-footer text-light pt-5 pb-4 mt-5">
+       <footer className="music-footer text-light pt-5 pb-4 mt-5" data-aos="fade-up" data-aos-duration="1000">
       <div >
         <div className="row footer-content">
 
           {/* Brand */}
           <div className="col-md-4 mb-4 fade-up">
-          <p style={{color:"yellow",fontSize:"25px",marginTop:"10px",marginLeft:"15px"}}><FaMusic /></p>
+          <p style={{color:"yellow",fontSize:"25px",marginTop:"10px",marginLeft:"15px"}}data-aos="fade-right" data-aos-duration="1000"><FaMusic /></p>
               <Link href="/" className="navbar-brand">
-                <p style={{marginLeft:"45px",marginTop:"-38px",color:"yellow",fontWeight:"bold"}}>MusicBook</p>
+                <p style={{marginLeft:"45px",marginTop:"-38px",color:"yellow",fontWeight:"bold"}}data-aos="fade-right" data-aos-duration="1000">MusicBook</p>
               </Link>
-            <p style={{marginLeft:"15px",fontSize:"18px"}}>
+            <p style={{marginLeft:"15px",fontSize:"18px"}} data-aos="fade-up" data-aos-duration="1000">
               Experience live concerts with premium seating and seamless booking.
             </p>
           </div>
@@ -35,10 +35,10 @@ export default function Footer(){
 
           {/* Social */}
           <div className="col-md-3 mb-4 foot">
-            <h6 className="fw-bold" style={{color:"yellow",marginTop:"15px"}}>Contact Us</h6>
-          <p style={{color:"white",fontSize:"20px",marginTop:"10px"}}><CgMail /></p>
+            <h6 className="fw-bold" style={{color:"yellow",marginTop:"15px"}} data-aos="fade-right" data-aos-duration="1000">Contact Us</h6>
+          <p style={{color:"white",fontSize:"20px",marginTop:"10px"}} data-aos="fade-up" data-aos-duration="1000"><CgMail /></p>
               <Link href="/" className="navbar-brand">
-                <p style={{marginLeft:"28px",marginTop:"-38px",fontSize:"18px"}}>musicbookinfo@gmail.com</p>
+                <p style={{marginLeft:"28px",marginTop:"-38px",fontSize:"18px"}} data-aos="fade-up" data-aos-duration="1000">musicbookinfo@gmail.com</p>
               </Link>
           </div>
 
@@ -46,7 +46,7 @@ export default function Footer(){
 
         <hr className="border-secondary" />
 
-        <div className="text-center fade-up delay-4">
+        <div className="text-center " >
           © {new Date().getFullYear()} <span>MusicBook</span>. All Rights Reserved.
         </div>
       </div>

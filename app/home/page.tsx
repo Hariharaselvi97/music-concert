@@ -22,7 +22,7 @@ export default function Home(){
     return(
        <div className="image">
        <div className="hero-text">
-       <h1 style={{marginTop:"-80px",fontSize:"35px"}}>{texts[currentIndex]}</h1>
+       <h1 style={{marginTop:"-80px",fontSize:"35px"}}  data-aos="fade-up" data-aos-duration="1000">{texts[currentIndex]}</h1>
        </div>
       </div>
        

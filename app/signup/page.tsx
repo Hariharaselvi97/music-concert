@@ -111,7 +111,7 @@ export default function Signup(){
   }
     return(
        <>
-    <div className="outer">
+    <div className="outer" data-aos="flip-up" data-aos-duration="1000">
       <h1>SignUp</h1>
       <form onSubmit={handleSubmit} >
       

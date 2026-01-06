@@ -79,9 +79,9 @@ export default function Navbar(){
 <>
 <nav className="navbar navbar-expand-lg navbar-dark  ">
   <div className="container-fluid">
-    <p style={{color:"white",fontSize:"30px",marginTop:"10px"}}><FaMusic /></p>
+    <p style={{color:"white",fontSize:"30px",marginTop:"10px"}} data-aos="fade-up" data-aos-duration="1000"><FaMusic /></p>
     <Link href="/" className="navbar-brand">
-      <h4 style={{marginLeft:"10px"}}>MusicBook</h4>
+      <h4 style={{marginLeft:"10px"}} data-aos="fade-up" data-aos-duration="1000">MusicBook</h4>
     </Link>
 
     {/* <form className="d-flex search position-relative"  >
@@ -103,7 +103,7 @@ export default function Navbar(){
           )} */}
 
     {/* Right: Links + Search */}
-    <div className="d-flex ms-auto align-items-center" >
+    <div className="d-flex ms-auto align-items-center" data-aos="fade-up" data-aos-duration="1000">
       <ul className="navbar-nav d-flex flex-row align-items-center me-3 top ">
         <li className="nav-item mx-2">
           <Link href="/" className="nav-link text-white">Home</Link>

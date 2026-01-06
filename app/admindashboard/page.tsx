@@ -11,8 +11,8 @@ import Link from "next/link";
 export default function Admindashboard(){
     const [events, setEvents] = useState<any[]>([]);
     const [editEvent, setEditEvent] = useState<any>(null);
-//     const [title, setTitle] = useState("");      // string input
-// const [ticketprice, setTicketprice] = useState(0);
+
+   
 
 
      const loadEvents = async () => {
@@ -23,16 +23,20 @@ export default function Admindashboard(){
   useEffect(() => {
     loadEvents();
   }, []);
+
    async function handleCreate(formData: FormData) {
     await createEvent(formData);
     loadEvents();
   }
+
    const handleEdit = (event: any) => {
-  setEditEvent(event); // store selected row data
+  setEditEvent(event); 
+ 
 };
+
   const handleDelete = async (id: string) => {
   await deleteEvent(id);
-  loadEvents(); // refresh table
+  loadEvents(); 
 
  
 };
@@ -41,15 +45,15 @@ export default function Admindashboard(){
       <>
               <div className='back'> <Link href="/" className='pro'>Back to home</Link></div>
 
-       <div className="ad">
+       <div className="ad"  data-aos="fade-up" data-aos-duration="1000">
         <h1>Admin Dashboard</h1>
-         <form action={handleCreate} className="dashin">
+         <form action={handleCreate}  className="dashin">
         <input type="text"name="title" placeholder="Title"  /><br></br><br></br>
         <input type="date"name="date" placeholder="Date" /><br></br><br></br>
         <input type="text"name="location" placeholder="Location" /><br></br><br></br>
         {/* <input type="number"name="ticketprice" placeholder="Price"  /><br></br><br></br> */}
         <input type="number"name="totalseats" placeholder="Seats"   /><br></br><br></br>
-       <input type="file" name="image" />
+       {/* <input type="file" name="image" accept="image/*"  /> */}
         <textarea name="description" placeholder="Description" /><br></br><br></br>
         <button type="submit" className="addbut">Add Event</button>
       </form><br></br>
@@ -75,14 +79,15 @@ export default function Admindashboard(){
                           <td style={{ whiteSpace: "nowrap" }}>{e.location}</td>
                           {/* <td style={{ whiteSpace: "nowrap" }}>{e.ticketprice}</td> */}
                           <td style={{ whiteSpace: "nowrap" }}>{e.totalseats}</td>
-                        {/* <td>
-  {e.image && <img src={e.image} width="80" />}
-</td> */}
+                         {/* <td>
+                         {e.image && <img src={e.image} width="80" style={{ borderRadius: 6 }} />}
+                          </td> */}
                           <td>{e.description}</td>
                           <td>
                             <div  style={{ display: "flex", alignItems: "center",gap: "10px", whiteSpace: "nowrap",justifyContent: "center",
     }}>
                             <button onClick={()=>handleEdit(e)}><MdEdit /></button>
+                             {/* <button onClick={() => setEditEvent(e)}><MdEdit /></button> */}
                             <button  style={{ color: "red", marginLeft: "8px" }} onClick={()=>handleDelete(e._id)}><MdDelete /></button>
                             </div>
                           </td>
@@ -109,15 +114,16 @@ export default function Admindashboard(){
           }}
           style={{ marginTop: "20px" }}
         >
+       
           <h3 style={{color:"white",textAlign:"center"}}>Edit Event</h3>
 
-          <input
+          <input 
             value={editEvent.title}
              placeholder="Title" 
             onChange={(e) =>
               setEditEvent({ ...editEvent, title: e.target.value })
             }
-          /><br></br><br></br>
+          /><br></br><br></br> 
 
           <input
             type="date"
@@ -128,6 +134,8 @@ export default function Admindashboard(){
             }
           /><br></br><br></br>
 
+   
+
           <input
           placeholder="Location"
             value={editEvent.location}
@@ -135,6 +143,7 @@ export default function Admindashboard(){
               setEditEvent({ ...editEvent, location: e.target.value })
             }
           /><br></br><br></br>
+
 
           {/* <input
             type="number"
@@ -154,16 +163,18 @@ export default function Admindashboard(){
             }
           /><br></br><br></br>
 
-          {/* <input
+          
+
+
+    {/* <input
   type="file"
-  accept="image/*"
   onChange={(e) =>
     setEditEvent({
       ...editEvent,
       image: e.target.files?.[0] || null,
     })
   }
-/><br></br><br></br> */}
+/><br></br><br></br>  */}
 
           <textarea
           name="description"
@@ -173,13 +184,12 @@ export default function Admindashboard(){
               setEditEvent({ ...editEvent, description: e.target.value })
             }
           /><br></br><br></br>
-
-          <br />
           <button type="submit" className="up">Update</button>
           <button type="button" onClick={() => setEditEvent(null)} className="up1">
             Cancel
           </button>
         </form>
+
       )}
        </div>
        </>

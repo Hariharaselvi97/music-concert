@@ -170,7 +170,7 @@ const eventDate = searchParams.get("date");
       
         {/* <div className='back'> <Link href="/" className='pro'>Back to home</Link></div> */}
 
-     <div className="con">
+     <div className="con" data-aos="fade-right" data-aos-duration="1000">
        <h4 style={{color:"darkblue",textAlign:"center"}}>{eventTitle}</h4>
       <p  style={{color:"darkblue",textAlign:"center"}}>{new Date(eventDate!).toDateString()}</p>
       <h2 style={{textAlign:"center",fontFamily:"cursive",color:"green"}}> Select Your Seats</h2>

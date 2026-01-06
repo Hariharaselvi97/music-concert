@@ -13,12 +13,12 @@ export default async function Artist(){
     return(
       
       <div className="container my-4" id="artist">
-  <h1 className="art"> Upcoming Concerts</h1><br></br><br></br>
+  <h1 className="art" data-aos="fade-right" data-aos-duration="1000"> Upcoming Concerts</h1><br></br><br></br>
 
   <div className="row">
     {events.map((e: any) => (
       <div key={e._id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div className="card h-100 shadow-sm border-0 concert-card">
+        <div className="card h-100 shadow-sm border-0 concert-card" data-aos="flip-left" data-aos-duration="1000">
 
           <img
             src={e.image || "/concert-placeholder.jpg"}

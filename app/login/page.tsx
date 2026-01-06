@@ -104,7 +104,7 @@ const closeModal=()=> setShowModal(false);
   }
     return(
         <>
-    <div className="outer1">
+    <div className="outer1"  data-aos="flip-up" data-aos-duration="1000">
       <h1>Login</h1>
       <form onSubmit={handleSubmit} >
      
