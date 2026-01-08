@@ -27,7 +27,6 @@ import { v4 as uuidv4 } from "uuid";
 export async function getBookedSeats(eventId:string) {
   
   await Connectdb();
-  
   const bookings = await Booking.find({eventId}).select("seats");;
   return bookings.flatMap((b) => b.seats)
 
@@ -46,14 +45,15 @@ export async function bookTickets(
   
   await Connectdb();
   
-  const bookingId = uuidv4();
+  // const bookingId = uuidv4();
 
   const booking = await Booking.create({
     eventId,
-    bookingId,
+    // bookingId,
     seats,
     totalAmount,
     email,
+    status: "BOOKED",
   });
 
   // await sendBookingEmail({
@@ -64,7 +64,7 @@ export async function bookTickets(
   // });
 
   return {
-    success: true,
-    bookingId,
+    // success: true,
+    bookingId: booking._id.toString()
   };
 }

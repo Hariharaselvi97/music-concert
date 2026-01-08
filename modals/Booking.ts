@@ -9,6 +9,13 @@ const BookingSchema = new mongoose.Schema({
   totalAmount:Number,
   eventId: String,
 
+   status: {
+    type: String,
+    enum: ["BOOKED", "CANCELLED"],
+    default: "BOOKED",
+  },
+
+
 });
 
 export const Booking =

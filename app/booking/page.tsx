@@ -102,7 +102,7 @@ const eventDate = searchParams.get("date");
   };
 
   const totalAmount = selectedSeats.reduce((sum, s) => sum + s.price, 0);
-   const bookingId = uuidv4();
+  //  const bookingId = uuidv4();
 
 
  const handleBooking = async () => {
@@ -120,23 +120,28 @@ const eventDate = searchParams.get("date");
       alert("Select seats first!");
       return;
     }
-    await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
+    // await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
     try {
         //  const bookingId = uuidv4();
 
         // await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
 
-         
+      const res = await bookTickets(
+      eventId,
+      selectedSeats.map(s => s.seat),
+      totalAmount,
+      email
+    );   
       
       // await fetchBookedSeats();
       // setSelectedSeats([]);
       //  setShowModal(true);
-
-
+   
        localStorage.setItem("eventTitle", eventTitle || "");
        localStorage.setItem("eventDate", eventDate || "");
      
-       localStorage.setItem("bookingId", bookingId);
+       localStorage.setItem("bookingId", res.bookingId);
+       localStorage.setItem("bookingStatus", "BOOKED");
 
        localStorage.setItem("selectedSeats",JSON.stringify(selectedSeats.map((s) => s.seat)) );
        localStorage.setItem( "totalAmount", totalAmount.toString() );

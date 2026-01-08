@@ -4,7 +4,7 @@ import Link from "next/link";
 import './profile.css'
 import { useRouter } from "next/navigation";
 import { FaEye ,FaRegEyeSlash } from "react-icons/fa";
-
+import { cancelbooking } from "../actions/cancelbooking";
 
 
 export default function Profile(){
@@ -27,6 +27,10 @@ const router = useRouter();
   const [bookingId, setBookingId] = useState<string>("");
   const [eventTitle, setEventTitle] = useState<string>("");
 const [eventDate, setEventDate] = useState<string>("");
+const [status, setStatus] = useState<string>("BOOKED");
+const [seats, setSeats] = useState<{ seatNumber: string; booked: boolean }[]>([]);
+
+
 
 
      useEffect(() => {
@@ -47,6 +51,8 @@ const [eventDate, setEventDate] = useState<string>("");
     const id = localStorage.getItem("bookingId") || "";
     setBookingId(id);
 
+    setStatus(localStorage.getItem("bookingStatus") || "BOOKED");
+
     setProfile((prev: any) => ({
     ...prev,
     username: name,
@@ -58,6 +64,43 @@ const [eventDate, setEventDate] = useState<string>("");
 
   
   }, []);
+
+
+   const handleCancel = async () => {
+    if (!bookingId) return;
+
+    const res = await cancelbooking(bookingId);
+
+    if (!res?.success) {
+      alert(res?.message || "Cancellation failed");
+      return;
+    }
+
+    
+    localStorage.setItem("bookingStatus", "CANCELLED");
+    setStatus("CANCELLED");
+
+   
+    setSelectedSeats([]); 
+
+    alert("Ticket cancelled successfully");
+
+  //    const res = await cancelbooking(bookingId);
+  // if (res?.success) {
+  //   alert("Ticket cancelled successfully");
+
+  //   // 1️⃣ Update seat availability in UI
+  //   setSeats((prevSeats) =>
+  //     prevSeats.map((s) => (selectedSeats.includes(s.seatNumber) ? { ...s, booked: false } : s))
+  //   );
+
+  //   // 2️⃣ Update booking status
+  //   setStatus("CANCELLED");
+  // } else {
+  //   alert(res?.message || "Cancellation failed");
+  // }
+  };
+
     return(
       
         <>
@@ -90,6 +133,28 @@ const [eventDate, setEventDate] = useState<string>("");
           <span className="value">₹{totalAmount}</span>
         </div>
       </div>
+
+      {status === "BOOKED" &&  bookingId &&(
+  <button
+    style={{
+      background: "red",
+      color: "white",
+      padding: "8px 16px",
+      borderRadius: "6px",
+      marginTop: "10px",
+      cursor: "pointer",
+    }}
+    onClick={handleCancel}
+  >
+    Cancel Ticket
+  </button>
+)}
+
+{status === "CANCELLED" && (
+  <p style={{ color: "red", fontWeight: "bold" }}>
+    ❌ Ticket Cancelled
+  </p>
+)}
       <div className="ticket-footer">
         <p>Thank you for booking!!</p>
       </div>
