@@ -36,6 +36,8 @@ export async function getBookedSeats(eventId:string) {
 
 export async function bookTickets(
   eventId:String,
+ eventTitle: string,
+  eventDate: string | Date,
   seats: String[],
   totalAmount: number,
   email: string,
@@ -50,6 +52,8 @@ export async function bookTickets(
   const booking = await Booking.create({
     eventId,
     // bookingId,
+    eventTitle,
+    eventDate,
     seats,
     totalAmount,
     email,

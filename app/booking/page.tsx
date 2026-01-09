@@ -128,6 +128,8 @@ const eventDate = searchParams.get("date");
 
       const res = await bookTickets(
       eventId,
+      eventTitle ?? "",
+      eventDate ?? "",
       selectedSeats.map(s => s.seat),
       totalAmount,
       email

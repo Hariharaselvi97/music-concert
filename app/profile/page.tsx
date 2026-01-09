@@ -29,8 +29,9 @@ const router = useRouter();
 const [eventDate, setEventDate] = useState<string>("");
 const [status, setStatus] = useState<string>("BOOKED");
 const [seats, setSeats] = useState<{ seatNumber: string; booked: boolean }[]>([]);
-
-
+const [showModal, setShowModal] = useState(false);
+ 
+  
 
 
      useEffect(() => {
@@ -76,31 +77,20 @@ const [seats, setSeats] = useState<{ seatNumber: string; booked: boolean }[]>([]
       return;
     }
 
-    
-    localStorage.setItem("bookingStatus", "CANCELLED");
-    setStatus("CANCELLED");
+    setShowModal(true);
 
-   
-    setSelectedSeats([]); 
+    setBookingId("");
+    setSelectedSeats([]);
+    setTotalAmount(0);
 
-    alert("Ticket cancelled successfully");
-
-  //    const res = await cancelbooking(bookingId);
-  // if (res?.success) {
-  //   alert("Ticket cancelled successfully");
-
-  //   // 1️⃣ Update seat availability in UI
-  //   setSeats((prevSeats) =>
-  //     prevSeats.map((s) => (selectedSeats.includes(s.seatNumber) ? { ...s, booked: false } : s))
-  //   );
-
-  //   // 2️⃣ Update booking status
-  //   setStatus("CANCELLED");
-  // } else {
-  //   alert(res?.message || "Cancellation failed");
-  // }
+  localStorage.removeItem("bookingId");
+  localStorage.removeItem("selectedSeats");
+  localStorage.removeItem("totalAmount");
+  localStorage.removeItem("bookingStatus");
+  localStorage.removeItem("eventTitle");
+  localStorage.removeItem("eventDate");
   };
-
+const closeModal=()=> setShowModal(false);
     return(
       
         <>
@@ -134,7 +124,7 @@ const [seats, setSeats] = useState<{ seatNumber: string; booked: boolean }[]>([]
         </div>
       </div>
 
-      {status === "BOOKED" &&  bookingId &&(
+     {bookingId && (
   <button
     style={{
       background: "red",
@@ -149,17 +139,25 @@ const [seats, setSeats] = useState<{ seatNumber: string; booked: boolean }[]>([]
     Cancel Ticket
   </button>
 )}
-
-{status === "CANCELLED" && (
-  <p style={{ color: "red", fontWeight: "bold" }}>
-    ❌ Ticket Cancelled
-  </p>
-)}
       <div className="ticket-footer">
         <p>Thank you for booking!!</p>
       </div>
     </div>
   
+   {showModal && (
+        <div className="modal show d-block" style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%" }}>
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-body" >
+                <h4 style={{ marginTop: "10px" ,color:"green",textAlign:"center"}}>Ticket Cancelled </h4>
+              </div>
+              <div className="modal-footer">
+                <button className="btn btn-secondary" onClick={closeModal}>Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    )}
       </>
     ) 
 }

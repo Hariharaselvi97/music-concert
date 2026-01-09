@@ -9,9 +9,11 @@ export async function cancelbooking(bookingId: string) {
   }
   await Connectdb();
 
-  await Booking.findByIdAndUpdate(bookingId, {
-    status: "CANCELLED",
-  });
+ const deleted = await Booking.findByIdAndDelete(bookingId);
+
+  if (!deleted) {
+    return { success: false, message: "Booking not found" };
+  }
 
   return { success: true };
 }

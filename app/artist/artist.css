@@ -34,3 +34,14 @@
 .concert-card:hover {
   transform: translateY(-5px);
 }
+.blinking-text {
+  animation: blink 5s infinite;
+  color: yellow; /* Optional: make it stand out */
+  font-weight: bold;
+}
+/* Define the blink keyframes */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}

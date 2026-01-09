@@ -1,7 +1,16 @@
 import mongoose from "mongoose";
 
 const BookingSchema = new mongoose.Schema({
+   
+    eventTitle: {
+    type: String,
+    required: true,
+  },
 
+  eventDate: {
+    type: Date,
+    required: true,
+  },
    seats: {
     type: [String],   // 👈 array of strings
     required: true,
