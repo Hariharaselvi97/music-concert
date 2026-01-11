@@ -9,7 +9,7 @@ import { getTicketsSoldForEvent } from "../actions/adminstatus" ;
 export default async function Artist(){
     const events = await getEvents();
 
-    // Fetch tickets sold for all events
+    
   const eventsWithTickets = await Promise.all(
     events.map(async (e: any) => {
       const ticketsSold = await getTicketsSoldForEvent(e._id);
@@ -17,7 +17,7 @@ export default async function Artist(){
     })
   );
 
-  const totalTickets = 100; // Total tickets per event
+  const totalTickets = 100; 
 
 
     return(
@@ -62,13 +62,7 @@ export default async function Artist(){
                 </div> */}
 
 
-            {/* <p className="fw-bold text-white fs-5 mt-auto">
-              ₹{e.ticketprice}
-            </p> */}
-
-          {/* <Link href="/booking" className="nav-link book">
-          Book Now
-          </Link> */}
+           
       <Link
   href={`/booking?eventId=${e._id}&title=${e.title}&date=${e.date}`}
   className="nav-link book"

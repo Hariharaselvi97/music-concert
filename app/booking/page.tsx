@@ -113,8 +113,8 @@ const eventDate = searchParams.get("date");
   //   router.push("/login");
   //   return;
   //  }
-    
-
+     
+   
    
     if (selectedSeats.length === 0) {
       alert("Select seats first!");
@@ -125,6 +125,14 @@ const eventDate = searchParams.get("date");
         //  const bookingId = uuidv4();
 
         // await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
+
+        
+      const email = localStorage.getItem("email") || "";
+      if (!email) {
+  alert("Login required!");
+  router.push("/login");
+  return;
+}
 
       const res = await bookTickets(
       eventId,

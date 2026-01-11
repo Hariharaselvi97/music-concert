@@ -124,6 +124,11 @@ const closeModal=()=> setShowModal(false);
         </div>
       </div>
 
+       <div className="ticket-footer">
+        <p>Thank you for booking!!</p>
+      </div>
+   
+
      {bookingId && (
   <button
     style={{
@@ -133,17 +138,15 @@ const closeModal=()=> setShowModal(false);
       borderRadius: "6px",
       marginTop: "10px",
       cursor: "pointer",
+      marginLeft:"150px"
     }}
     onClick={handleCancel}
   >
     Cancel Ticket
   </button>
 )}
-      <div className="ticket-footer">
-        <p>Thank you for booking!!</p>
-      </div>
-    </div>
-  
+      
+   </div>
    {showModal && (
         <div className="modal show d-block" style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%" }}>
           <div className="modal-dialog modal-dialog-centered">

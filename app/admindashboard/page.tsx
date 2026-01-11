@@ -47,13 +47,12 @@ export default function Admindashboard(){
 
        <div className="ad"  data-aos="fade-up" data-aos-duration="1000">
         <h1>Admin Dashboard</h1>
-         <form action={handleCreate}  className="dashin">
+         <form action={handleCreate}  className="dashin" encType="multipart/form-data">
         <input type="text"name="title" placeholder="Title"  /><br></br><br></br>
         <input type="date"name="date" placeholder="Date" /><br></br><br></br>
         <input type="text"name="location" placeholder="Location" /><br></br><br></br>
-        {/* <input type="number"name="ticketprice" placeholder="Price"  /><br></br><br></br> */}
         <input type="number"name="totalseats" placeholder="Seats"   /><br></br><br></br>
-       {/* <input type="file" name="image" accept="image/*"  /> */}
+        <input type="file" name="image" accept="image/*"  />
         <textarea name="description" placeholder="Description" /><br></br><br></br>
         <button type="submit" className="addbut">Add Event</button>
       </form><br></br>
@@ -64,11 +63,10 @@ export default function Admindashboard(){
                     <th style={{ whiteSpace: "nowrap" }}>Title</th>
                     <th style={{ whiteSpace: "nowrap" }}>Date</th>
                     <th style={{ whiteSpace: "nowrap" }}>Location</th>
-                    {/* <th style={{ whiteSpace: "nowrap" }}>TicketPrice</th> */}
                     <th style={{ whiteSpace: "nowrap" }}>TotalSeats</th>
-                    {/* <th>Image</th> */}
+                    <th>Image</th>
                     <th>Description</th>
-                      <th>Actions</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -77,17 +75,13 @@ export default function Admindashboard(){
                           <td style={{ whiteSpace: "nowrap" }}>{e.title}</td>
                           <td style={{ whiteSpace: "nowrap" }}>{e.date}</td>
                           <td style={{ whiteSpace: "nowrap" }}>{e.location}</td>
-                          {/* <td style={{ whiteSpace: "nowrap" }}>{e.ticketprice}</td> */}
                           <td style={{ whiteSpace: "nowrap" }}>{e.totalseats}</td>
-                         {/* <td>
-                         {e.image && <img src={e.image} width="80" style={{ borderRadius: 6 }} />}
-                          </td> */}
+                          <td>{e.image && <img src={e.image} width="80" height="80" style={{ borderRadius: 6 }} />}</td>
                           <td>{e.description}</td>
                           <td>
                             <div  style={{ display: "flex", alignItems: "center",gap: "10px", whiteSpace: "nowrap",justifyContent: "center",
     }}>
                             <button onClick={()=>handleEdit(e)}><MdEdit /></button>
-                             {/* <button onClick={() => setEditEvent(e)}><MdEdit /></button> */}
                             <button  style={{ color: "red", marginLeft: "8px" }} onClick={()=>handleDelete(e._id)}><MdDelete /></button>
                             </div>
                           </td>
@@ -96,6 +90,8 @@ export default function Admindashboard(){
                     }
                 </tbody>
         </table>
+
+
          {editEvent && (
         <form className="ad1"
           onSubmit={async (e) => {
@@ -104,7 +100,6 @@ export default function Admindashboard(){
               title: editEvent.title,
               date: editEvent.date,
               location: editEvent.location,
-              // ticketprice: editEvent.ticketprice,
               // image:editEvent.image,
               totalseats: editEvent.totalseats,
               description: editEvent.description,
@@ -145,15 +140,7 @@ export default function Admindashboard(){
           /><br></br><br></br>
 
 
-          {/* <input
-            type="number"
-            placeholder="Price"
-            value={editEvent.totalprice}
-            onChange={(e) =>
-              setEditEvent({ ...editEvent, ticketprice: e.target.value })
-            }
-          /><br></br><br></br> */}
-
+       
           <input
             type="number"
             placeholder="Seats"

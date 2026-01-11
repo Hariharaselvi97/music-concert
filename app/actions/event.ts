@@ -8,22 +8,23 @@ import cloudinary from "@/lib/cloudinary";
 export async function createEvent(formData: FormData) {
   await Connectdb();
 
-const file = formData.get("image");
- let imageUrl: string | undefined = undefined;
+const file = formData.get("image") as File;
+let imageUrl = "";
 
-   if (file instanceof File && file.size > 0) {
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+   if (file && file.size > 0) {
+    const buffer = Buffer.from(await file.arrayBuffer());
 
-     const uploadResult: any = await new Promise((resolve, reject) => {
-      cloudinary.uploader
-        .upload_stream({ folder: "events" }, (error, result) => {
+    const upload = await new Promise<any>((resolve, reject) => {
+      cloudinary.uploader.upload_stream(
+        { folder: "concerts" },
+        (error, result) => {
           if (error) reject(error);
           else resolve(result);
-        })
-        .end(buffer);
+        }
+      ).end(buffer);
     });
-    imageUrl = uploadResult.secure_url;
+
+    imageUrl = upload.secure_url;
   }
   
 

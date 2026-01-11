@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import {Booking} from "@/modals/Booking";
 import {Connectdb} from "@/lib/mongodb";
-// import { sendBookingEmail } from "@/lib/sendEmail";
+import { sendBookingEmail } from "@/lib/sendEmail";
 import { v4 as uuidv4 } from "uuid";
 
 // export async function GET(req: Request) {
@@ -60,15 +60,31 @@ export async function bookTickets(
     status: "BOOKED",
   });
 
-  // await sendBookingEmail({
-  //   to: email,
-  //   bookingId,
+  // await sendBookingEmail(email, {
+  //   title: eventTitle,
+  //   eventDate: new Date(eventDate).toLocaleDateString(),
   //   seats,
-  //   totalAmount,
+  //   totalAmount
   // });
+  
 
-  return {
-    // success: true,
-    bookingId: booking._id.toString()
-  };
+  // return {
+  //   // success: true,
+  //   bookingId: booking._id.toString()
+  // };
+
+    const bookingId = booking._id.toString(); // ✅ define it here
+
+  // 3️⃣ Send confirmation email
+  await sendBookingEmail(email, {
+    bookingId,  // now it exists
+    title: eventTitle,
+    eventDate: new Date(eventDate).toLocaleDateString(), 
+    seats,
+    totalAmount
+  });
+
+  // 4️⃣ Return bookingId to frontend
+  return { bookingId };
+
 }
