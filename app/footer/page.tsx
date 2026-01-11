@@ -43,7 +43,6 @@ export default function Footer(){
           </div>
 
         </div>
-
         <hr className="border-secondary" />
 
         <div className="text-center " >
