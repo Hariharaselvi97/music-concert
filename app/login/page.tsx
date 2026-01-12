@@ -17,13 +17,13 @@ export default function Login(){
      
     const router = useRouter(); 
 
-//    useEffect(() => {
-//     const user = localStorage.getItem("username");
+   useEffect(() => {
+    const user = localStorage.getItem("username");
 
-//     if (user) {
-//       router.replace("/");   // 🚀 redirect to home
-//     }
-//   }, []);
+    if (user) {
+      router.replace("/");   // 🚀 redirect to home
+    }
+  }, []);
 
     const [message, setMessage] = useState({
  
@@ -104,7 +104,7 @@ const closeModal=()=> setShowModal(false);
   }
     return(
         <>
-    <div className="outer1"  data-aos="flip-up" data-aos-duration="1000">
+    <div className="mx-auto d-block outer1"  data-aos="flip-up" data-aos-duration="1000">
       <h1>Login</h1>
       <form onSubmit={handleSubmit} >
      

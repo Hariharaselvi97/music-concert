@@ -44,12 +44,7 @@ let imageUrl = "";
 export async function getEvents() {
   await Connectdb();
 
-  // const events = await Event.find().lean(); // ✅ IMPORTANT
-
-  // return events.map((e) => ({
-  //   ...e,
-  //   _id: e._id.toString(), // ✅ convert ObjectId
-  // }));
+ 
 
 const events = await Event.find();
 

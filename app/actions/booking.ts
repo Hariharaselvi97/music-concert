@@ -73,18 +73,18 @@ export async function bookTickets(
   //   bookingId: booking._id.toString()
   // };
 
-    const bookingId = booking._id.toString(); // ✅ define it here
+    const bookingId = booking._id.toString(); 
 
-  // 3️⃣ Send confirmation email
+  
   await sendBookingEmail(email, {
-    bookingId,  // now it exists
+    bookingId,  
     title: eventTitle,
     eventDate: new Date(eventDate).toLocaleDateString(), 
     seats,
     totalAmount
   });
 
-  // 4️⃣ Return bookingId to frontend
+ 
   return { bookingId };
 
 }

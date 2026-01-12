@@ -61,6 +61,20 @@ export default function Navbar(){
     window.addEventListener("storage", checkUser);
     return () => window.removeEventListener("storage", checkUser);
   }, []);
+  
+
+    useEffect(() => {
+    window.history.pushState(null, "", window.location.href);
+
+    const handleBack = () => {
+      window.history.pushState(null, "", window.location.href);
+    };
+
+    window.addEventListener("popstate", handleBack);
+
+    return () => window.removeEventListener("popstate", handleBack);
+  }, []);
+
 
   const handleLogout = () => {
     localStorage.removeItem("username");

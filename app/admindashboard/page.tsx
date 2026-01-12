@@ -43,9 +43,9 @@ export default function Admindashboard(){
 
     return(
       <>
-              <div className='back'> <Link href="/" className='pro'>Back to home</Link></div>
+              <div className='text-center my-3 back'> <Link href="/" className='pro'>Back to home</Link></div>
 
-       <div className="ad"  data-aos="fade-up" data-aos-duration="1000">
+       <div className="mx-auto d-block ad"  data-aos="fade-up" data-aos-duration="1000">
         <h1>Admin Dashboard</h1>
          <form action={handleCreate}  className="dashin" encType="multipart/form-data">
         <input type="text"name="title" placeholder="Title"  /><br></br><br></br>
@@ -93,7 +93,7 @@ export default function Admindashboard(){
 
 
          {editEvent && (
-        <form className="ad1"
+        <form className="mx-auto d-block ad1"
           onSubmit={async (e) => {
             e.preventDefault();
             await updateEvent(editEvent._id, {

@@ -73,7 +73,7 @@ export default function Admin(){
     }
     return(
          <>
-            <div className="out" data-aos="flip-up" data-aos-duration="1000">
+            <div className="mx-auto d-block out" data-aos="flip-up" data-aos-duration="1000">
               <h1>Admin</h1>
               <form onSubmit={handleSubmit} >
               

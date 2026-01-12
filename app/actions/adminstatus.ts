@@ -2,7 +2,7 @@
 import { Connectdb } from "@/lib/mongodb";
 import { Booking } from "@/modals/Booking";
 
-// Get total tickets sold for a specific event
+
 export async function getTicketsSoldForEvent(eventId: string) {
   await Connectdb();
 

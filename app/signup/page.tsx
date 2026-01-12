@@ -11,13 +11,13 @@ import { useRouter } from "next/navigation";
 
 export default function Signup(){
      const router = useRouter(); 
-  //     useEffect(() => {
-  //   const user = localStorage.getItem("username");
+      useEffect(() => {
+    const user = localStorage.getItem("username");
 
-  //   if (user) {
-  //     router.replace("/");   // 🚀 redirect to home
-  //   }
-  // }, []);
+    if (user) {
+      router.replace("/");   // 🚀 redirect to home
+    }
+  }, []);
 
      const [form, setForm] = useState({
     name: "",
@@ -111,7 +111,7 @@ export default function Signup(){
   }
     return(
        <>
-    <div className="outer" data-aos="flip-up" data-aos-duration="1000">
+    <div className="mx-auto d-block outer" data-aos="flip-up" data-aos-duration="1000">
       <h1>SignUp</h1>
       <form onSubmit={handleSubmit} >
       

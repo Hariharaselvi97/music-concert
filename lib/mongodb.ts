@@ -9,7 +9,7 @@ export const Connectdb = async()=>{
       return;
     }
 
-    // await mongoose.connect("mongodb://localhost:27017/firstdb");
+  
         await mongoose.connect(process.env.Mongo_URL!);
 
     console.log("MongoDB Connected");
