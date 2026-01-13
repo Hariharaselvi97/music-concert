@@ -158,7 +158,7 @@ export default function Navbar(){
   </Link>
 </div>
 
-    {/* 3-line button */}
+   
    <button
           className="navbar-toggler"
           type="button"
@@ -168,7 +168,7 @@ export default function Navbar(){
         </button>
 
 
-    {/* Collapsible menu */}
+  
      <div className={`navbar-collapse ${open ? "d-block" : "d-none"} d-lg-flex`}>
           <ul className="navbar-nav ms-auto text-center top">
             <li className="nav-item mx-2">
