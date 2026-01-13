@@ -2,7 +2,6 @@
 import { useState,useEffect } from "react";
 // import { bookTickets, getBookedSeats } from "../actions/booking";
 import { bookTickets ,getBookedSeats} from "../actions/booking";
-
 import './booking.css'
 import { v4 as uuidv4 } from 'uuid';
 import { useSearchParams } from "next/navigation";
@@ -106,13 +105,13 @@ const eventDate = searchParams.get("date");
 
 
  const handleBooking = async () => {
-  //   const user = localStorage.getItem("user");
+    const user = localStorage.getItem("user");
 
-  //   if (!user) {
-  //   alert("Login required!");
-  //   router.push("/login");
-  //   return;
-  //  }
+    if (!user) {
+    alert("Login required!");
+    router.push("/login");
+    return;
+   }
      
    
    

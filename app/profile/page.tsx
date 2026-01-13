@@ -95,7 +95,8 @@ const closeModal=()=> setShowModal(false);
       
         <>
         
-         <div className='text-center my-3 back'> <Link href="/" className='pro'>Back to home</Link></div>
+         <div className='my-3 back'> <Link href="/" className='pro'>Back to home</Link></div>
+         
 
        <div className="ticket">
       <div className="ticket-header">

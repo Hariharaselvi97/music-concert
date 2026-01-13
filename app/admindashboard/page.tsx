@@ -43,7 +43,7 @@ export default function Admindashboard(){
 
     return(
       <>
-              <div className='text-center my-3 back'> <Link href="/" className='pro'>Back to home</Link></div>
+              <div className=' my-3 back'> <Link href="/" className='pro'>Back to home</Link></div>
 
        <div className="mx-auto d-block ad"  data-aos="fade-up" data-aos-duration="1000">
         <h1>Admin Dashboard</h1>

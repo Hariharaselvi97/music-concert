@@ -14,6 +14,9 @@ export default function Navbar(){
    const [search, setSearch] = useState("");
    const [events, setEvents] = useState([]);
     const [filteredEvents, setFilteredEvents] = useState([]);
+
+     const [open, setOpen] = useState(false);
+
   //   useEffect(() => {
   //   const user = localStorage.getItem("username");
   //   setLoggedIn(!!user);
@@ -91,32 +94,14 @@ export default function Navbar(){
 
 
 <>
-<nav className="navbar navbar-expand-lg navbar-dark  ">
+{/* <nav className="navbar navbar-expand-lg navbar-dark  ">
   <div className="container-fluid">
     <p style={{color:"white",fontSize:"30px",marginTop:"10px"}} data-aos="fade-up" data-aos-duration="1000"><FaMusic /></p>
     <Link href="/" className="navbar-brand">
       <h4 style={{marginLeft:"10px"}} data-aos="fade-up" data-aos-duration="1000">MusicBook</h4>
     </Link>
 
-    {/* <form className="d-flex search position-relative"  >
-        <input className="form-control "style={{ marginRight: "-60px" }}  type="text" placeholder="Search by title or location"   value={search}
-        onChange={(e) => setSearch(e.target.value)}  onKeyDown={(e) => {
-              if (e.key === "Enter") e.preventDefault(); // Prevent page reload
-            }}/>
-        <button className="btn btn-outline-light but" type="button" onClick={handleSearchClick}   ><FaSearch /></button>
-      </form>
-     {filteredEvents.length > 0 && (
-            <div className="search-results position-absolute bg-white shadow p-2" style={{ top: "100%", width: "300px", zIndex: 1000 }}>
-              {filteredEvents.map((event: any) => (
-                <Link key={event._id} href={`/artist/${event._id}`} className="text-dark d-block p-2 border-bottom">
-                  <strong>{event.title}</strong><br />
-                  <small>{event.location}</small>
-                </Link>
-              ))}
-            </div>
-          )} */}
-
-    {/* Right: Links + Search */}
+   
     <div className="d-flex ms-auto align-items-center" data-aos="fade-up" data-aos-duration="1000">
       <ul className="navbar-nav d-flex flex-row align-items-center me-3 top ">
         <li className="nav-item mx-2">
@@ -159,8 +144,72 @@ export default function Navbar(){
    
     </div>
   </div>
-</nav>
+</nav> */}
 
+<nav className="navbar navbar-expand-lg navbar-dark">
+  <div className="container-fluid">
+   <div className="d-flex align-items-center">
+  <p style={{ color:"white", fontSize:"30px", margin: 0 }}>
+    <FaMusic />
+  </p>
+
+  <Link href="/" className="navbar-brand ms-2">
+    <span style={{ margin: 0 ,fontSize:"25px"}}>MusicBook</span>
+  </Link>
+</div>
+
+    {/* 3-line button */}
+   <button
+          className="navbar-toggler"
+          type="button"
+          onClick={() => setOpen(!open)}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+
+    {/* Collapsible menu */}
+     <div className={`navbar-collapse ${open ? "d-block" : "d-none"} d-lg-flex`}>
+          <ul className="navbar-nav ms-auto text-center top">
+            <li className="nav-item mx-2">
+              <Link href="/" className="nav-link text-white">Home</Link>
+            </li>
+            <li className="nav-item mx-2">
+              <Link href="/#about" className="nav-link text-white">About</Link>
+            </li>
+            <li className="nav-item mx-2">
+              <Link href="/#artist" className="nav-link text-white">Artist</Link>
+            </li>
+
+            {loggedIn ? (
+              <>
+                <li className="nav-item mx-2">
+                  <Link href="/profile" className="nav-link text-white">Profile</Link>
+                </li>
+                <li className="nav-item mx-2">
+                  <button
+                    onClick={handleLogout}
+                    className="btn btn-link nav-link text-white"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item mx-2">
+                  <Link href="/signup" className="nav-link text-white">Signup</Link>
+                </li>
+                <li className="nav-item mx-2">
+                  <Link href="/login" className="nav-link text-white">Login</Link>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+  </div>
+</nav>
+ 
 
 {showModal && (
          <>
