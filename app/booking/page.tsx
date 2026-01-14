@@ -1,6 +1,5 @@
 'use client'
 import { useState,useEffect } from "react";
-// import { bookTickets, getBookedSeats } from "../actions/booking";
 import { bookTickets ,getBookedSeats} from "../actions/booking";
 import './booking.css'
 import { v4 as uuidv4 } from 'uuid';
@@ -11,7 +10,6 @@ import { useRouter } from "next/navigation";
 
 
 
-// export default function Booking({ eventId }: { eventId: string }){
   export default function Booking(){
  const router = useRouter(); 
  const searchParams = useSearchParams();
@@ -53,7 +51,6 @@ const eventDate = searchParams.get("date");
 
   const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
   const [bookedSeats, setBookedSeats] = useState<string[]>([]);
-  // const [modalMessage, setModalMessage] = useState({ type: "", text: "" });
   const [email, setEmail] = useState("");
 
   
@@ -67,28 +64,7 @@ const eventDate = searchParams.get("date");
   }, [eventId]);
 
 
-
-// const fetchBookedSeats = async () => {
-//   if (!eventId) return;
-//   try {
-//     const res = await fetch(`/api/booked-seats?eventId=${eventId}`);
-//     const data: string[] = await res.json();
-//     setBookedSeats(data);
-//   } catch (err) {
-//     console.error("Failed to load booked seats", err);
-//   }
-// };
-
-// // Now it’s safe to use
-// useEffect(() => {
-//   fetchBookedSeats();
-// }, [eventId]);
-
-
- 
- 
   
-
   const toggleSeat = (seat: string, price: number, type:"vip" | "gold" | "silver") => {
      
     const exists = selectedSeats.find((s) => s.seat === seat);
@@ -119,13 +95,8 @@ const eventDate = searchParams.get("date");
       alert("Select seats first!");
       return;
     }
-    // await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
     try {
-        //  const bookingId = uuidv4();
-
-        // await bookTickets( eventId,selectedSeats.map(s => s.seat), totalAmount,email);
-
-        
+      
       const email = localStorage.getItem("email") || "";
       if (!email) {
   alert("Login required!");
@@ -142,9 +113,7 @@ const eventDate = searchParams.get("date");
       email
     );   
       
-      // await fetchBookedSeats();
-      // setSelectedSeats([]);
-      //  setShowModal(true);
+      
    
        localStorage.setItem("eventTitle", eventTitle || "");
        localStorage.setItem("eventDate", eventDate || "");
@@ -164,7 +133,7 @@ const eventDate = searchParams.get("date");
 
       setTimeout(() => {
       router.push("/profile");
-    }, 2000); // 2000ms = 2 seconds
+    }, 2000);
 
    } catch (err) {
       console.error(err);
@@ -182,7 +151,6 @@ const eventDate = searchParams.get("date");
    return(
      < div key={eventId}>
       
-        {/* <div className='back'> <Link href="/" className='pro'>Back to home</Link></div> */}
 
      <div className="con" data-aos="fade-right" data-aos-duration="1000">
        <h4 style={{color:"darkblue",textAlign:"center"}}>{eventTitle}</h4>

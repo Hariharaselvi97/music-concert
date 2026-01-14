@@ -11,7 +11,7 @@ export default function Footer(){
       <div >
         <div className="row footer-content">
 
-          {/* Brand */}
+        
           <div className="col-md-4 mb-4 fade-up">
           <p style={{color:"yellow",fontSize:"25px",marginTop:"10px",marginLeft:"15px"}}data-aos="fade-right" data-aos-duration="1000"><FaMusic /></p>
               <Link href="/" className="navbar-brand">
@@ -34,7 +34,7 @@ export default function Footer(){
           </div>
 
 
-          {/* Social */}
+          
           <div className="col-12 col-md-3 mb-4 foot">
             <h6 className="fw-bold" style={{color:"yellow",marginTop:"15px"}} data-aos="fade-right" data-aos-duration="1000">Contact Us</h6>
           <p style={{color:"white",fontSize:"20px",marginTop:"10px"}} data-aos="fade-up" data-aos-duration="1000"><CgMail /></p>
