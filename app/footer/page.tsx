@@ -23,24 +23,26 @@ export default function Footer(){
           </div>
 
       
-          {/* <div className="col-md-2 mb-4 fade-up delay-1">
-            <h6 className="fw-bold">Explore</h6>
-            <ul className="list-unstyled">
+          <div className="col-md-2 mb-4 foot1">
+            <h6 className="fw-bold" style={{color:"yellow",marginTop:"15px"}} data-aos="fade-right" data-aos-duration="1000">Explore</h6>
+            <ul className="list-unstyled" style={{fontSize:"18px"}}>
               <li><a href="/" className="footer-link">Home</a></li>
-              <li><a href="/" className="footer-link">About</a></li>
-              <li><a href="/" className="footer-link">Artists</a></li>
+              <li><a href="/#about" className="footer-link">About</a></li>
+              <li><a href="/#artist" className="footer-link">Artists</a></li>
+             
             </ul>
-          </div> */}
+          </div>
 
 
           {/* Social */}
-          <div className="col-md-3 mb-4 foot">
+          <div className="col-12 col-md-3 mb-4 foot">
             <h6 className="fw-bold" style={{color:"yellow",marginTop:"15px"}} data-aos="fade-right" data-aos-duration="1000">Contact Us</h6>
           <p style={{color:"white",fontSize:"20px",marginTop:"10px"}} data-aos="fade-up" data-aos-duration="1000"><CgMail /></p>
               <Link href="/" className="navbar-brand">
                 <p style={{marginLeft:"28px",marginTop:"-38px",fontSize:"18px"}} data-aos="fade-up" data-aos-duration="1000">musicbookinfo@gmail.com</p>
               </Link>
           </div>
+         
 
         </div>
         <hr className="border-secondary" />
@@ -50,5 +52,9 @@ export default function Footer(){
         </div>
       </div>
     </footer>
+
+ 
+
+
     )
 }

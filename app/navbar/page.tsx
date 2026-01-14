@@ -148,7 +148,7 @@ export default function Navbar(){
 
 <nav className="navbar navbar-expand-lg navbar-dark">
   <div className="container-fluid">
-   <div className="d-flex align-items-center">
+   <div className="d-flex align-items-center"data-aos="fade-up" data-aos-duration="1000">
   <p style={{ color:"white", fontSize:"30px", margin: 0 }}>
     <FaMusic />
   </p>
@@ -171,25 +171,26 @@ export default function Navbar(){
   
      <div className={`navbar-collapse ${open ? "d-block" : "d-none"} d-lg-flex`}>
           <ul className="navbar-nav ms-auto text-center top">
-            <li className="nav-item mx-2">
+            <li className="nav-item mx-2" data-aos="fade-up" data-aos-duration="1000">
               <Link href="/" className="nav-link text-white">Home</Link>
             </li>
-            <li className="nav-item mx-2">
+            <li className="nav-item mx-2" data-aos="fade-up" data-aos-duration="1000">
               <Link href="/#about" className="nav-link text-white">About</Link>
             </li>
-            <li className="nav-item mx-2">
+            <li className="nav-item mx-2" data-aos="fade-up" data-aos-duration="1000">
               <Link href="/#artist" className="nav-link text-white">Artist</Link>
             </li>
 
             {loggedIn ? (
               <>
-                <li className="nav-item mx-2">
+                <li className="nav-item mx-2" data-aos="fade-up" data-aos-duration="1000">
                   <Link href="/profile" className="nav-link text-white">Profile</Link>
                 </li>
-                <li className="nav-item mx-2">
+                <li className="nav-item mx-2 " >
                   <button
                     onClick={handleLogout}
-                    className="btn btn-link nav-link text-white"
+                    className="btn btn-link nav-link text-white  "
+                     style={{ fontWeight:"bold",fontSize:"18px",marginLeft:"-10px"}}
                   >
                     Logout
                   </button>
@@ -197,10 +198,10 @@ export default function Navbar(){
               </>
             ) : (
               <>
-                <li className="nav-item mx-2">
+                <li className="nav-item mx-2" data-aos="fade-up" data-aos-duration="1000">
                   <Link href="/signup" className="nav-link text-white">Signup</Link>
                 </li>
-                <li className="nav-item mx-2">
+                <li className="nav-item mx-2" data-aos="fade-up" data-aos-duration="1000">
                   <Link href="/login" className="nav-link text-white">Login</Link>
                 </li>
               </>

@@ -105,7 +105,7 @@ const eventDate = searchParams.get("date");
 
 
  const handleBooking = async () => {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem("username");
 
     if (!user) {
     alert("Login required!");
