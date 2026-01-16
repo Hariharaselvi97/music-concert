@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState,useEffect } from "react";
 import { bookTickets ,getBookedSeats} from "../actions/booking";
 import './booking.css'
