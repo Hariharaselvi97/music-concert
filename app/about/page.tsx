@@ -24,7 +24,7 @@ export default function About(){
           className="mb-3 text-center text-white"
           data-aos="fade-up"
           data-aos-duration="1000"
-        style={{fontFamily:"Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif",fontSize:"25px",marginTop:"40px"}}>
+        style={{fontFamily:"Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif",fontSize:"23px",marginTop:"40px"}}>
           MusicBook is your ultimate platform for discovering and booking the 
           best music concerts around you. We bring artists, bands, and music lovers 
           together on one stage. Enjoy seamless ticket booking, event updates, 
