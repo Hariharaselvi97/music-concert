@@ -1,10 +1,11 @@
+'use client';
 import { useState,useEffect } from "react";
+import { useSearchParams ,useRouter} from "next/navigation";
 import { bookTickets ,getBookedSeats} from "../actions/booking";
-import { useSearchParams } from "next/navigation";
 import './booking.css'
 import { v4 as uuidv4 } from 'uuid';
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
 
 
 
