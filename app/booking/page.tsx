@@ -216,7 +216,7 @@
 //   );
 // }
 
-
+'use client'; 
 
 import BookingComponent from "./BookingComponent";
 
