@@ -1,9 +1,9 @@
 'use client'; 
-
+export const dynamic = "force-dynamic";
 import BookingComponent from "./BookingComponent";
 
 
-export const dynamic = "force-dynamic";
+
 
 export default function Booking() {
   return <BookingComponent />;
